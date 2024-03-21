@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-4 py-xl-5">
+    <div class="row gy-4 gy-md-0">
+        <div class="col-md-6">
+            <div class="p-xl-5 m-xl-5"><img class="img-fluid w-100 fit-cover" style="min-height: 300px;" src="{% static 'img/utils/error.png' %}" /></div>
+        </div>
+        <div class="col-md-6 d-md-flex align-items-md-center">
+            <div style="max-width: 500px;">
+                <h2 class="text-uppercase fw-bold"><span class="text-danger">УВЫ!</span> страница не найдена</h2>
+                <p class="my-3">Похоже этой страницы не существует, с кем не бывает.</p><a class="btn btn-primary btn-lg me-2" role="button" href="#">На главную!</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

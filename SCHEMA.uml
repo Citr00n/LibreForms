@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>54f5960b-4271-43b0-8159-e0f6e36803f9.TABLE:libreforms.public.auth_group</OriginalElement>
+  <nodes>
+    <node x="-984.0" y="346.0">54f5960b-4271-43b0-8159-e0f6e36803f9.TABLE:libreforms.public.auth_user</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Compact" zoom="1.5" showDependencies="false" x="-839.0" y="508.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Columns</Category>
+    <Category>Comments</Category>
+    <Category>Key columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+
