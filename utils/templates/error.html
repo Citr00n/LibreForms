@@ -9,8 +9,13 @@
         </div>
         <div class="col-md-6 d-md-flex align-items-md-center">
             <div style="max-width: 500px;">
-                <h2 class="text-uppercase fw-bold"><span class="text-danger">УВЫ!</span> страница не найдена</h2>
-                <p class="my-3">Похоже этой страницы не существует, с кем не бывает.</p><a class="btn btn-primary btn-lg me-2" role="button" href="#">На главную!</a>
+                <h2 class="text-uppercase fw-bold"><span class="text-danger">УВЫ!</span> {{ title }}</h2>
+                {% if title == 'Отказано в доступе' %}
+                    <p class="my-3">Возможно, вы попытались создать пользователя, который уже существует, войти в несуществующий аккаунт, или вы просто недостаточно круты, чтобы просматривать эту страницу :)</p>
+                {% elif title == 'Страница не найдена' %}
+                    <p class="my-3">Похоже этой страницы не существует, с кем не бывает.</p>
+                {% endif %}
+                <a class="btn btn-primary btn-lg me-2" role="button" href="/">На главную!</a>
             </div>
         </div>
     </div>
