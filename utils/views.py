@@ -6,7 +6,7 @@ from django.shortcuts import render
 def index(request):
     """
 
-    :param request: 
+    :param request:
 
     """
     title = "Доделай страницу дебил"
@@ -16,9 +16,9 @@ def index(request):
 def not_found(req, *args, **kwargs):
     """
 
-    :param req: 
-    :param *args: 
-    :param **kwargs: 
+    :param req:
+    :param *args:
+    :param **kwargs:
 
     """
     title = "Страница не найдена"
@@ -28,9 +28,9 @@ def not_found(req, *args, **kwargs):
 def server_error(req, *args, **kwargs):
     """
 
-    :param req: 
-    :param *args: 
-    :param **kwargs: 
+    :param req:
+    :param *args:
+    :param **kwargs:
 
     """
     title = "Ошибка сервера"
@@ -40,9 +40,9 @@ def server_error(req, *args, **kwargs):
 def permission_denied(req, *args, **kwargs):
     """
 
-    :param req: 
-    :param *args: 
-    :param **kwargs: 
+    :param req:
+    :param *args:
+    :param **kwargs:
 
     """
     title = "Отказано в доступе"

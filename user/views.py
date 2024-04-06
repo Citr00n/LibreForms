@@ -17,7 +17,7 @@ from . import forms
 def login_view(req):
     """
 
-    :param req: 
+    :param req:
 
     """
     if req.user.is_authenticated is True:
@@ -41,7 +41,7 @@ def login_view(req):
 def home_view(req):
     """
 
-    :param req: 
+    :param req:
 
     """
     if req.user.is_authenticated is True:
@@ -53,7 +53,7 @@ def home_view(req):
 def logout_view(req):
     """
 
-    :param req: 
+    :param req:
 
     """
     if req.user.is_authenticated is True:
@@ -69,7 +69,7 @@ def logout_view(req):
 def signup_view(req):
     """
 
-    :param req: 
+    :param req:
 
     """
     if req.user.is_authenticated is not True:
