@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center py-3" style="margin-top: 2em">
+    <h1>Вы точно хотите выйти?</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button class="btn btn-danger" type="submit" style="margin-left: 1em">Да!</button>
+    </form>
+
+</div>
+{% endblock %}

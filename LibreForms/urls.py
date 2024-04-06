@@ -17,12 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from utils.views import *
-import forms
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('forms/', include('forms.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
+    path('user/', include('user.urls')),
+    path('', index, name='index')
 ]
 
 handler404 = 'utils.views.not_found'
