@@ -14,17 +14,18 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import path, include
 from utils.views import *
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('forms/', include('forms.urls')),
-    path('user/', include('user.urls')),
-    path('', index, name='index')
+    path("admin/", admin.site.urls),
+    path("forms/", include("forms.urls")),
+    path("user/", include("user.urls")),
+    path("", index, name="index"),
 ]
 
-handler404 = 'utils.views.not_found'
-handler500 = 'utils.views.server_error'
-handler403 = 'utils.views.permission_denied'
+handler404 = "utils.views.not_found"
+handler500 = "utils.views.server_error"
+handler403 = "utils.views.permission_denied"
