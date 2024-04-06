@@ -12,6 +12,11 @@ from . import forms
 
 
 def login_view(req):
+    """
+
+    :param req: 
+
+    """
     if req.user.is_authenticated is True:
         return redirect("index")
 
@@ -31,6 +36,11 @@ def login_view(req):
 
 
 def home_view(req):
+    """
+
+    :param req: 
+
+    """
     if req.user.is_authenticated is True:
         return render(req, "userhome.html", context={"title": req.user.username})
     else:
@@ -38,6 +48,11 @@ def home_view(req):
 
 
 def logout_view(req):
+    """
+
+    :param req: 
+
+    """
     if req.user.is_authenticated is True:
         if req.method == "GET":
             return render(req, "logout.html", context={"title": "Выход"})
@@ -49,6 +64,11 @@ def logout_view(req):
 
 
 def signup_view(req):
+    """
+
+    :param req: 
+
+    """
     if req.user.is_authenticated is not True:
         if req.method == "GET":
             form = forms.UserForm()
