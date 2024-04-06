@@ -1,11 +1,9 @@
-from django.contrib.auth.context_processors import auth
 from django.core.exceptions import PermissionDenied
 from django.db import IntegrityError
 from django.shortcuts import render, redirect
 from . import forms
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
-import django.contrib.auth.forms as auth_forms
 
 
 # Create your views here.
