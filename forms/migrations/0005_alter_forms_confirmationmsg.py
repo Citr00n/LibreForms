@@ -14,6 +14,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="forms",
             name="confirmationMsg",
-            field=models.TextField(default="Ваш ответ был засчитан.", max_length=255),
+            field=models.TextField(default="Ваш ответ был засчитан.",
+                                   max_length=255),
         ),
     ]
