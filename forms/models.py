@@ -5,7 +5,9 @@ from django.db import models
 
 
 class Forms(models.Model):
+    """ """
     class Meta:
+        """ """
         verbose_name = "Форма"
         verbose_name_plural = "Формы"
 
@@ -23,7 +25,9 @@ class Forms(models.Model):
 
 
 class Questions(models.Model):
+    """ """
     class Meta:
+        """ """
         verbose_name = "Вопрос"
         verbose_name_plural = "Вопросы"
 
@@ -38,7 +42,9 @@ class Questions(models.Model):
 
 
 class Choices(models.Model):
+    """ """
     class Meta:
+        """ """
         verbose_name = "Вариант ответа"
         verbose_name_plural = "Варианты ответа"
 
@@ -53,6 +59,7 @@ class Choices(models.Model):
 
 
 class UserAnswers(models.Model):
+    """ """
     id = models.UUIDField(
         primary_key=True, default=uuid.uuid4, editable=False, unique=True
     )

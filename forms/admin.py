@@ -8,6 +8,7 @@ from .models import *
 
 
 class FormsAdmin(admin.ModelAdmin):
+    """ """
     fieldsets = (
         (None, {"fields": ("title", "description", "confirmationMsg")}),
         (
@@ -17,6 +18,13 @@ class FormsAdmin(admin.ModelAdmin):
     )
 
     def get_form(self, request, obj=None, **kwargs):
+        """
+
+        :param request: 
+        :param obj:  (Default value = None)
+        :param **kwargs: 
+
+        """
         if request.user.is_superuser is not True:
             self.readonly_fields = ("id", "creator", "createdAt", "updatedAt")
         else:
@@ -24,10 +32,23 @@ class FormsAdmin(admin.ModelAdmin):
         return super(FormsAdmin, self).get_form(request, obj)
 
     def save_model(self, request, obj, form, change):
+        """
+
+        :param request: 
+        :param obj: 
+        :param form: 
+        :param change: 
+
+        """
         obj.creator = request.user
         obj.save()
 
     def get_queryset(self, request):
+        """
+
+        :param request: 
+
+        """
         qs = super(FormsAdmin, self).get_queryset(request)
         if request.user.is_superuser:
             return qs
@@ -35,12 +56,20 @@ class FormsAdmin(admin.ModelAdmin):
 
 
 class QuestionsAdmin(admin.ModelAdmin):
+    """ """
     fieldsets = (
         (None, {"fields": ("question", "question_type", "description", "form")}),
         ("Техническая информация", {"fields": ("id", "creator")}),
     )
 
     def get_form(self, request, obj=None, **kwargs):
+        """
+
+        :param request: 
+        :param obj:  (Default value = None)
+        :param **kwargs: 
+
+        """
         if request.user.is_superuser is not True:
             self.readonly_fields = ("id", "creator")
         else:
@@ -53,10 +82,23 @@ class QuestionsAdmin(admin.ModelAdmin):
         return form
 
     def save_model(self, request, obj, form, change):
+        """
+
+        :param request: 
+        :param obj: 
+        :param form: 
+        :param change: 
+
+        """
         obj.creator = request.user
         obj.save()
 
     def get_queryset(self, request):
+        """
+
+        :param request: 
+
+        """
         qs = super(QuestionsAdmin, self).get_queryset(request)
         if request.user.is_superuser:
             return qs
@@ -64,12 +106,20 @@ class QuestionsAdmin(admin.ModelAdmin):
 
 
 class ChoicesAdmin(admin.ModelAdmin):
+    """ """
     fieldsets = (
         (None, {"fields": ("choice", "question")}),
         ("Техническая информация", {"fields": ("id", "creator")}),
     )
 
     def get_form(self, request, obj=None, **kwargs):
+        """
+
+        :param request: 
+        :param obj:  (Default value = None)
+        :param **kwargs: 
+
+        """
 
         if request.user.is_superuser is not True:
             self.readonly_fields = ("id", "creator")
@@ -83,10 +133,23 @@ class ChoicesAdmin(admin.ModelAdmin):
         return form
 
     def save_model(self, request, obj, form, change):
+        """
+
+        :param request: 
+        :param obj: 
+        :param form: 
+        :param change: 
+
+        """
         obj.creator = request.user
         obj.save()
 
     def get_queryset(self, request):
+        """
+
+        :param request: 
+
+        """
         qs = super(ChoicesAdmin, self).get_queryset(request)
         if request.user.is_superuser:
             return qs
