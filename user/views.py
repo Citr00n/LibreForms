@@ -1,10 +1,10 @@
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import Group, User
 from django.core.exceptions import PermissionDenied
 from django.db import IntegrityError
-from django.shortcuts import render, redirect
-from . import forms
-from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.models import User, Group
+from django.shortcuts import redirect, render
 
+from . import forms
 
 # Create your views here.
 

@@ -1,8 +1,8 @@
 from django.contrib import admin
 from django.db.models import QuerySet
 from django.shortcuts import get_object_or_404
-from .models import *
 
+from .models import *
 
 # Register your models here.
 
