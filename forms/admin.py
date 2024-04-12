@@ -9,6 +9,7 @@ from .models import *
 
 class FormsAdmin(admin.ModelAdmin):
     """ """
+
     fieldsets = (
         (None, {
             "fields": ("title", "description", "confirmationMsg")
@@ -24,7 +25,7 @@ class FormsAdmin(admin.ModelAdmin):
     def get_form(self, request, obj=None, **kwargs):
         """
 
-        :param request:
+        :param request: param obj:  (Default value = None)
         :param obj:  (Default value = None)
         :param **kwargs:
 
@@ -38,9 +39,9 @@ class FormsAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         """
 
-        :param request:
+        :param request: param obj:
+        :param form: param change:
         :param obj:
-        :param form:
         :param change:
 
         """
@@ -61,6 +62,7 @@ class FormsAdmin(admin.ModelAdmin):
 
 class QuestionsAdmin(admin.ModelAdmin):
     """ """
+
     fieldsets = (
         (None, {
             "fields": ("question", "question_type", "description", "form")
@@ -73,7 +75,7 @@ class QuestionsAdmin(admin.ModelAdmin):
     def get_form(self, request, obj=None, **kwargs):
         """
 
-        :param request:
+        :param request: param obj:  (Default value = None)
         :param obj:  (Default value = None)
         :param **kwargs:
 
@@ -91,9 +93,9 @@ class QuestionsAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         """
 
-        :param request:
+        :param request: param obj:
+        :param form: param change:
         :param obj:
-        :param form:
         :param change:
 
         """
@@ -114,6 +116,7 @@ class QuestionsAdmin(admin.ModelAdmin):
 
 class ChoicesAdmin(admin.ModelAdmin):
     """ """
+
     fieldsets = (
         (None, {
             "fields": ("choice", "question")
@@ -126,7 +129,7 @@ class ChoicesAdmin(admin.ModelAdmin):
     def get_form(self, request, obj=None, **kwargs):
         """
 
-        :param request:
+        :param request: param obj:  (Default value = None)
         :param obj:  (Default value = None)
         :param **kwargs:
 
@@ -145,9 +148,9 @@ class ChoicesAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         """
 
-        :param request:
+        :param request: param obj:
+        :param form: param change:
         :param obj:
-        :param form:
         :param change:
 
         """
