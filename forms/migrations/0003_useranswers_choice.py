@@ -14,7 +14,8 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='useranswers',
             name='choice',
-            field=models.ForeignKey(default=0, on_delete=django.db.models.deletion.CASCADE, to='forms.choices'),
+            field=models.ForeignKey(
+                default=0, on_delete=django.db.models.deletion.CASCADE, to='forms.choices'),
             preserve_default=False,
         ),
     ]

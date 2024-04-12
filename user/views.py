@@ -53,7 +53,8 @@ def signup_view(req):
 
         elif req.method == 'POST':
             try:
-                user = User.objects.create_user(username=req.POST['username'], password=req.POST['password'], is_staff=True)
+                user = User.objects.create_user(
+                    username=req.POST['username'], password=req.POST['password'], is_staff=True)
                 user.save()
                 group = Group.objects.get(name="default")
                 user.groups.add(group)
