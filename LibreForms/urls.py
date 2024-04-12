@@ -15,18 +15,20 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.urls import include
+from django.urls import path
 from django.views.generic import RedirectView
-from django.urls import path, include
+
 from utils.views import *
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('form/', include('forms.urls')),
-    path('user/', include('user.urls')),
-    path('', index, name='index'),
+    path("admin/", admin.site.urls),
+    path("form/", include("forms.urls")),
+    path("user/", include("user.urls")),
+    path("", index, name="index"),
     path("__debug__/", include("debug_toolbar.urls")),
 ]
 
-handler404 = 'utils.views.not_found'
-handler500 = 'utils.views.server_error'
-handler403 = 'utils.views.permission_denied'
+handler404 = "utils.views.not_found"
+handler500 = "utils.views.server_error"
+handler403 = "utils.views.permission_denied"

@@ -9,4 +9,3 @@ uvicorn~=0.29.0
 click~=8.1.7
 h11~=0.14.0
 colorama~=0.4.6
-
