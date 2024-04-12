@@ -26,7 +26,7 @@ class FormsAdmin(admin.ModelAdmin):
         """
 
         :param request: param obj:  (Default value = None)
-        :param obj:  (Default value = None)
+        :param obj: Default value = None)
         :param **kwargs:
 
         """
@@ -41,7 +41,7 @@ class FormsAdmin(admin.ModelAdmin):
 
         :param request: param obj:
         :param form: param change:
-        :param obj:
+        :param obj: param change:
         :param change:
 
         """
@@ -76,7 +76,7 @@ class QuestionsAdmin(admin.ModelAdmin):
         """
 
         :param request: param obj:  (Default value = None)
-        :param obj:  (Default value = None)
+        :param obj: Default value = None)
         :param **kwargs:
 
         """
@@ -95,7 +95,7 @@ class QuestionsAdmin(admin.ModelAdmin):
 
         :param request: param obj:
         :param form: param change:
-        :param obj:
+        :param obj: param change:
         :param change:
 
         """
@@ -130,7 +130,7 @@ class ChoicesAdmin(admin.ModelAdmin):
         """
 
         :param request: param obj:  (Default value = None)
-        :param obj:  (Default value = None)
+        :param obj: Default value = None)
         :param **kwargs:
 
         """
@@ -150,7 +150,7 @@ class ChoicesAdmin(admin.ModelAdmin):
 
         :param request: param obj:
         :param form: param change:
-        :param obj:
+        :param obj: param change:
         :param change:
 
         """
