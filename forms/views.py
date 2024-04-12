@@ -11,10 +11,10 @@ from .models import *
 def form_view(req, form_id, *args, **kwargs):
     """
 
-    :param req: 
-    :param form_id: 
-    :param *args: 
-    :param **kwargs: 
+    :param req:
+    :param form_id:
+    :param *args:
+    :param **kwargs:
 
     """
     form = get_object_or_404(Forms, id=form_id)

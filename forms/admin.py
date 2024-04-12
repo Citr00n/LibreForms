@@ -20,9 +20,9 @@ class FormsAdmin(admin.ModelAdmin):
     def get_form(self, request, obj=None, **kwargs):
         """
 
-        :param request: 
+        :param request:
         :param obj:  (Default value = None)
-        :param **kwargs: 
+        :param **kwargs:
 
         """
         if request.user.is_superuser is not True:
@@ -34,10 +34,10 @@ class FormsAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         """
 
-        :param request: 
-        :param obj: 
-        :param form: 
-        :param change: 
+        :param request:
+        :param obj:
+        :param form:
+        :param change:
 
         """
         obj.creator = request.user
@@ -46,7 +46,7 @@ class FormsAdmin(admin.ModelAdmin):
     def get_queryset(self, request):
         """
 
-        :param request: 
+        :param request:
 
         """
         qs = super(FormsAdmin, self).get_queryset(request)
@@ -65,9 +65,9 @@ class QuestionsAdmin(admin.ModelAdmin):
     def get_form(self, request, obj=None, **kwargs):
         """
 
-        :param request: 
+        :param request:
         :param obj:  (Default value = None)
-        :param **kwargs: 
+        :param **kwargs:
 
         """
         if request.user.is_superuser is not True:
@@ -84,10 +84,10 @@ class QuestionsAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         """
 
-        :param request: 
-        :param obj: 
-        :param form: 
-        :param change: 
+        :param request:
+        :param obj:
+        :param form:
+        :param change:
 
         """
         obj.creator = request.user
@@ -96,7 +96,7 @@ class QuestionsAdmin(admin.ModelAdmin):
     def get_queryset(self, request):
         """
 
-        :param request: 
+        :param request:
 
         """
         qs = super(QuestionsAdmin, self).get_queryset(request)
@@ -115,9 +115,9 @@ class ChoicesAdmin(admin.ModelAdmin):
     def get_form(self, request, obj=None, **kwargs):
         """
 
-        :param request: 
+        :param request:
         :param obj:  (Default value = None)
-        :param **kwargs: 
+        :param **kwargs:
 
         """
 
@@ -135,10 +135,10 @@ class ChoicesAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         """
 
-        :param request: 
-        :param obj: 
-        :param form: 
-        :param change: 
+        :param request:
+        :param obj:
+        :param form:
+        :param change:
 
         """
         obj.creator = request.user
@@ -147,7 +147,7 @@ class ChoicesAdmin(admin.ModelAdmin):
     def get_queryset(self, request):
         """
 
-        :param request: 
+        :param request:
 
         """
         qs = super(ChoicesAdmin, self).get_queryset(request)
