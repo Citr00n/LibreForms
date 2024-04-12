@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="text-white py-4 py-xl-5">
+    <div class="container">
+        <div class="border rounded-4 border-0 d-flex flex-column justify-content-center align-items-center p-4 py-5" style="background: linear-gradient(180deg, rgba(255, 0, 0, 0.15), rgba(255, 0, 0, 0.05));">
+            <div class="row">
+                <div class="col-md-10 col-xl-8 text-center d-flex d-sm-flex d-md-flex justify-content-center align-items-center mx-auto justify-content-md-start align-items-md-center justify-content-xl-center">
+                    <div>
+                        <h1 class="text-uppercase fw-bold mb-3">{{ title }}</h1>
+                        {% if description is not Null %}
+                        <p class="mb-4">{{ description }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <form>
+        <div class="container py-4 py-xl-5">
+            <hr class="my-5" />
+            <div class="row rounded-4 shadow" style="background: linear-gradient(180deg, rgba(255, 0, 0, 0.15), rgba(255, 0, 0, 0.05)););">
+                <div class="col-md-8 col-xl-6 mx-auto p-4">
+                    <div class="d-flex align-items-center align-items-md-start align-items-xl-center">
+                        <div>
+                            <h4>Title</h4>
+                            <p>Erat netus est hendrerit, nullam et quis ad cras porttitor iaculis. Bibendum vulputate cras aenean.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col border d-none d-md-block" style="max-width: 1px; padding: unset!important; background: linear-gradient(180deg, rgb(255,213,0), rgba(255, 255, 255, 0));"></div>
+                <div class="d-sm-block d-md-none"><hr></div>
+                <div class="col col-md-5 mx-auto p-3">
+                    <div class="my-2">
+                        <fieldset>
+                            <legend class="h4 m-1">Выберите ответ:</legend>
+                            <label>
+{#                                Сделать через массивы!!!#}
+                                <input type="radio" name="test" required>
+                                Тест
+                            </label>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</section>
+{% endblock %}

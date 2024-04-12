@@ -15,14 +15,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.views.generic import RedirectView
 from django.urls import path, include
 from utils.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('forms/', include('forms.urls')),
+    path('form/', include('forms.urls')),
     path('user/', include('user.urls')),
-    path('', index, name='index')
+    path('', index, name='index'),
 ]
 
 handler404 = 'utils.views.not_found'

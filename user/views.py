@@ -3,7 +3,7 @@ from django.db import IntegrityError
 from django.shortcuts import render, redirect
 from . import forms
 from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 
 
 # Create your views here.
@@ -53,8 +53,10 @@ def signup_view(req):
 
         elif req.method == 'POST':
             try:
-                user = User.objects.create_user(username=req.POST['username'], password=req.POST['password'])
+                user = User.objects.create_user(username=req.POST['username'], password=req.POST['password'], is_staff=True)
                 user.save()
+                group = Group.objects.get(name="default")
+                user.groups.add(group)
                 login(req, user)
             except IntegrityError:
                 raise PermissionDenied
