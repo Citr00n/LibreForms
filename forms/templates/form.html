@@ -19,14 +19,15 @@
 </section>
 <section>
     <form>
+        {% for question in questions %}
         <div class="container py-4 py-xl-5">
             <hr class="my-5" />
             <div class="row rounded-4 shadow" style="background: linear-gradient(180deg, rgba(255, 0, 0, 0.15), rgba(255, 0, 0, 0.05)););">
                 <div class="col-md-8 col-xl-6 mx-auto p-4">
                     <div class="d-flex align-items-center align-items-md-start align-items-xl-center">
                         <div>
-                            <h4>Title</h4>
-                            <p>Erat netus est hendrerit, nullam et quis ad cras porttitor iaculis. Bibendum vulputate cras aenean.</p>
+                            <h4>{{ question.question }}</h4>
+                            <p>{{ question.description }}</p>
                         </div>
                     </div>
                 </div>
@@ -36,17 +37,19 @@
                     <div class="my-2">
                         <fieldset>
                             <legend class="h4 m-1">Выберите ответ:</legend>
+                            {% for choice in question.choices.all %}
                             <label>
-{#                                Сделать через массивы!!!#}
                                 <input type="radio" name="test" required>
-                                Тест
+                                {{ choice.choice }}
                             </label>
+                            {% endfor %}
                         </fieldset>
                     </div>
                 </div>
             </div>
 
         </div>
+        {% endfor %}
     </form>
 </section>
 {% endblock %}

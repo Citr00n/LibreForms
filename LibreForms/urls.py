@@ -24,6 +24,7 @@ urlpatterns = [
     path('form/', include('forms.urls')),
     path('user/', include('user.urls')),
     path('', index, name='index'),
+    path("__debug__/", include("debug_toolbar.urls")),
 ]
 
 handler404 = 'utils.views.not_found'

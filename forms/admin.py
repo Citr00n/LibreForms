@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.db.models import QuerySet
-
+from django.shortcuts import get_object_or_404
 from .models import *
 
 
@@ -46,7 +46,10 @@ class QuestionsAdmin(admin.ModelAdmin):
             self.readonly_fields = ('id', 'creator')
         else:
             self.readonly_fields = ('id',)
-        return super(QuestionsAdmin, self).get_form(request, obj)
+        form = super(QuestionsAdmin, self).get_form(request, obj, **kwargs)
+        if request.user.is_superuser is not True:
+            form.base_fields['form'].queryset = Forms.objects.filter(creator=request.user)
+        return form
 
     def save_model(self, request, obj, form, change):
         obj.creator = request.user
@@ -68,11 +71,15 @@ class ChoicesAdmin(admin.ModelAdmin):
     )
 
     def get_form(self, request, obj=None, **kwargs):
+
         if request.user.is_superuser is not True:
             self.readonly_fields = ('id', 'creator')
         else:
             self.readonly_fields = ('id',)
-        return super(ChoicesAdmin, self).get_form(request, obj)
+        form = super(ChoicesAdmin, self).get_form(request, obj, **kwargs)
+        if request.user.is_superuser is not True:
+            form.base_fields['question'].queryset = Questions.objects.filter(creator=request.user)
+        return form
 
     def save_model(self, request, obj, form, change):
         obj.creator = request.user

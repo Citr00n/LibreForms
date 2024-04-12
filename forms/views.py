@@ -15,12 +15,14 @@ def form_view(req, form_id, *args, **kwargs):
         q[i.id] = list(i.choices.all())
     print(q)
 
-
     context = {
         'title': form.title,
         'description': form.description,
         'confirmation_msg': form.confirmationMsg,
         'id': form.id,
+        'questions': questions,
+        'form': form,
+        'choices': q,
     }
 
     return render(req, 'form.html', context=context)
