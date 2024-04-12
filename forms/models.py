@@ -25,7 +25,7 @@ class Questions(models.Model):
     question = models.CharField(max_length=200)
     description = models.TextField(blank=True, max_length=10000)
     question_type = models.CharField(max_length=10)
-    form = models.ForeignKey(Forms, on_delete=models.CASCADE)
+    form = models.ForeignKey(Forms, on_delete=models.CASCADE, related_name='questions')
     creator = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
@@ -34,7 +34,7 @@ class Choices(models.Model):
         verbose_name = 'Вариант ответа'
         verbose_name_plural = 'Варианты ответа'
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
-    question = models.ForeignKey(Questions, on_delete=models.CASCADE)
+    question = models.ForeignKey(Questions, on_delete=models.CASCADE, related_name='choices')
     choice = models.CharField(max_length=200)
     creator = models.ForeignKey(User, on_delete=models.CASCADE)
 

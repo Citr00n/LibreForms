@@ -8,6 +8,14 @@ from .models import *
 
 def form_view(req, form_id, *args, **kwargs):
     form = get_object_or_404(Forms, id=form_id)
+    questions = form.questions.all()
+    q = {}
+    n = len(list(questions))
+    for i in questions:
+        q[i.id] = list(i.choices.all())
+    print(q)
+
+
     context = {
         'title': form.title,
         'description': form.description,
