@@ -6,14 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('forms', '0004_alter_forms_description'),
+        ("forms", "0004_alter_forms_description"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='forms',
-            name='confirmationMsg',
-            field=models.TextField(
-                default='Ваш ответ был засчитан.', max_length=255),
+            model_name="forms",
+            name="confirmationMsg",
+            field=models.TextField(default="Ваш ответ был засчитан.", max_length=255),
         ),
     ]

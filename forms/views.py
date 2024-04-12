@@ -6,6 +6,7 @@ from .models import *
 
 # Create your views here.
 
+
 def form_view(req, form_id, *args, **kwargs):
     form = get_object_or_404(Forms, id=form_id)
     questions = form.questions.all()
@@ -16,13 +17,13 @@ def form_view(req, form_id, *args, **kwargs):
     print(q)
 
     context = {
-        'title': form.title,
-        'description': form.description,
-        'confirmation_msg': form.confirmationMsg,
-        'id': form.id,
-        'questions': questions,
-        'form': form,
-        'choices': q,
+        "title": form.title,
+        "description": form.description,
+        "confirmation_msg": form.confirmationMsg,
+        "id": form.id,
+        "questions": questions,
+        "form": form,
+        "choices": q,
     }
 
-    return render(req, 'form.html', context=context)
+    return render(req, "form.html", context=context)

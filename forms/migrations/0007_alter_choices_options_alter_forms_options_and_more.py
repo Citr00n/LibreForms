@@ -6,33 +6,35 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('forms', '0006_choices_creator_questions_creator'),
+        ("forms", "0006_choices_creator_questions_creator"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='choices',
-            options={'verbose_name': 'Вариант ответа',
-                     'verbose_name_plural': 'Варианты ответа'},
+            name="choices",
+            options={
+                "verbose_name": "Вариант ответа",
+                "verbose_name_plural": "Варианты ответа",
+            },
         ),
         migrations.AlterModelOptions(
-            name='forms',
-            options={'verbose_name': 'Форма', 'verbose_name_plural': 'Формы'},
+            name="forms",
+            options={"verbose_name": "Форма", "verbose_name_plural": "Формы"},
         ),
         migrations.AlterModelOptions(
-            name='questions',
-            options={'verbose_name': 'Вопрос',
-                     'verbose_name_plural': 'Вопросы'},
+            name="questions",
+            options={"verbose_name": "Вопрос", "verbose_name_plural": "Вопросы"},
         ),
         migrations.AddField(
-            model_name='questions',
-            name='description',
+            model_name="questions",
+            name="description",
             field=models.TextField(blank=True, max_length=10000),
         ),
         migrations.AlterField(
-            model_name='forms',
-            name='confirmationMsg',
+            model_name="forms",
+            name="confirmationMsg",
             field=models.TextField(
-                blank=True, default='Ваш ответ был засчитан.', max_length=255),
+                blank=True, default="Ваш ответ был засчитан.", max_length=255
+            ),
         ),
     ]
