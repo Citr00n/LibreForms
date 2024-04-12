@@ -20,17 +20,11 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterModelOptions(
             name="forms",
-            options={
-                "verbose_name": "Форма",
-                "verbose_name_plural": "Формы"
-            },
+            options={"verbose_name": "Форма", "verbose_name_plural": "Формы"},
         ),
         migrations.AlterModelOptions(
             name="questions",
-            options={
-                "verbose_name": "Вопрос",
-                "verbose_name_plural": "Вопросы"
-            },
+            options={"verbose_name": "Вопрос", "verbose_name_plural": "Вопросы"},
         ),
         migrations.AddField(
             model_name="questions",
@@ -40,8 +34,8 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="forms",
             name="confirmationMsg",
-            field=models.TextField(blank=True,
-                                   default="Ваш ответ был засчитан.",
-                                   max_length=255),
+            field=models.TextField(
+                blank=True, default="Ваш ответ был засчитан.", max_length=255
+            ),
         ),
     ]
