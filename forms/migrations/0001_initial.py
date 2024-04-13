@@ -31,10 +31,12 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 ("title", models.CharField(max_length=255)),
-                ("description", models.CharField(blank=True, max_length=10000)),
+                ("description", models.CharField(blank=True,
+                                                 max_length=10000)),
                 (
                     "confirmationMsg",
-                    models.CharField(default="Ваш ответ был засчитан.", max_length=255),
+                    models.CharField(default="Ваш ответ был засчитан.",
+                                     max_length=255),
                 ),
                 ("createdAt", models.DateTimeField(auto_now_add=True)),
                 ("updatedAt", models.DateTimeField(auto_now=True)),
@@ -66,8 +68,8 @@ class Migration(migrations.Migration):
                 (
                     "form",
                     models.ForeignKey(
-                        on_delete=django.db.models.deletion.CASCADE, to="forms.form"
-                    ),
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="forms.form"),
                 ),
             ],
         ),

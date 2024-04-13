@@ -24,7 +24,12 @@ def login_view(req):
 
     elif req.method == "GET":
         form = forms.UserForm()
-        return render(req, "login.html", context={"title": "Вход", "form": form})
+        return render(req,
+                      "login.html",
+                      context={
+                          "title": "Вход",
+                          "form": form
+                      })
 
     elif req.method == "POST":
         username = req.POST["username"]
@@ -44,7 +49,9 @@ def home_view(req):
 
     """
     if req.user.is_authenticated is True:
-        return render(req, "userhome.html", context={"title": req.user.username})
+        return render(req,
+                      "userhome.html",
+                      context={"title": req.user.username})
     else:
         return redirect("login")
 
@@ -74,9 +81,12 @@ def signup_view(req):
     if req.user.is_authenticated is not True:
         if req.method == "GET":
             form = forms.UserForm()
-            return render(
-                req, "signup.html", context={"title": "Регистрация", "form": form}
-            )
+            return render(req,
+                          "signup.html",
+                          context={
+                              "title": "Регистрация",
+                              "form": form
+                          })
 
         elif req.method == "POST":
             try:
