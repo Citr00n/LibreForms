@@ -6,6 +6,7 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
+    """ """
 
     dependencies = [
         ("forms", "0013_forms_only_logged_in"),

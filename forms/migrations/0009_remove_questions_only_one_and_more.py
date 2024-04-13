@@ -4,6 +4,7 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
+    """ """
 
     dependencies = [
         ("forms", "0008_questions_only_one_alter_choices_question_and_more"),

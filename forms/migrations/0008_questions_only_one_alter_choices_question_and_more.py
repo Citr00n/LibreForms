@@ -5,6 +5,7 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
+    """ """
 
     dependencies = [
         ("forms", "0007_alter_choices_options_alter_forms_options_and_more"),

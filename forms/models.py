@@ -28,6 +28,7 @@ class Forms(models.Model):
 
 
 class Questions(models.Model):
+    """ """
 
     question_types = {
         "radio": "Один вариант",

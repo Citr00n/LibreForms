@@ -4,6 +4,7 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
+    """ """
 
     dependencies = [
         ("forms", "0010_rename_question_type_questions_type"),
