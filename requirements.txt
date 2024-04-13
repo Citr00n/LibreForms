@@ -9,3 +9,16 @@ uvicorn~=0.29.0
 click~=8.1.7
 h11~=0.14.0
 colorama~=0.4.6
+
+pillow~=10.3.0
+numpy~=1.26.4
+six~=1.16.0
+python-dateutil~=2.9.0.post0
+matplotlib~=3.8.4
+contourpy~=1.2.1
+fonttools~=4.51.0
+pyparsing~=3.1.2
+cycler~=0.12.1
+packaging~=24.0
+kiwisolver~=1.4.5
+django-debug-toolbar~=4.3.0

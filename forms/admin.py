@@ -1,7 +1,4 @@
 from django.contrib import admin
-from django.db.models import QuerySet
-from django.shortcuts import get_object_or_404
-
 from .models import *
 
 # Register your models here.
@@ -12,7 +9,7 @@ class FormsAdmin(admin.ModelAdmin):
 
     fieldsets = (
         (None, {
-            "fields": ("title", "description", "confirmationMsg")
+            "fields": ("title", "description", "confirmationMsg", "only_logged_in")
         }),
         (
             "Техническая информация",
@@ -65,7 +62,7 @@ class QuestionsAdmin(admin.ModelAdmin):
 
     fieldsets = (
         (None, {
-            "fields": ("question", "question_type", "description", "form")
+            "fields": ("question", "type", "description", "form")
         }),
         ("Техническая информация", {
             "fields": ("id", "creator")

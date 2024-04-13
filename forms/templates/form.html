@@ -9,7 +9,7 @@
                     <div>
                         <h1 class="text-uppercase fw-bold mb-3">{{ title }}</h1>
                         {% if description is not Null %}
-                        <p class="mb-4">{{ description }}</p>
+                        <p class="mb-4 h5">{{ description }}</p>
                         {% endif %}
                     </div>
                 </div>
@@ -17,8 +17,10 @@
         </div>
     </div>
 </section>
+{% if confirm is False %}
 <section>
-    <form>
+    <form method="post">
+        {% csrf_token %}
         {% for question in questions %}
         <div class="container py-4 py-xl-5">
             <hr class="my-5" />
@@ -39,9 +41,19 @@
                             <legend class="h4 m-1">Выберите ответ:</legend>
                             {% for choice in question.choices.all %}
                             <label>
-                                <input type="radio" name="test" required>
-                                {{ choice.choice }}
+                                {% if question.type == 'radio' %}
+                                    <input type="radio" class="form-check-input" name="{{ question.id }}" value="{{ choice.id }}"
+                                            {% if question.required %} required {% endif %}>
+                                    {{ choice.choice }}
+                                {% elif question.type == 'checkbox' %}
+                                    <input type="checkbox" class="form-check-input" name="{{ question.id }}" value="{{ choice.id }}"
+                                            {% if question.required %} required {% endif %}>
+                                            {{ choice.choice }}
+                                {% elif question.type == 'text' %}
+                                    <textarea class="form-control" name="{{ question }}"></textarea>
+                                {% endif %}
                             </label>
+                            <br>
                             {% endfor %}
                         </fieldset>
                     </div>
@@ -50,6 +62,8 @@
 
         </div>
         {% endfor %}
+    <button class="btn btn-primary d-flex, mx-auto" type="submit" style="display: block">Button</button>
     </form>
 </section>
+ {% endif %}
 {% endblock %}
