@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from .models import *
 
 # Register your models here.
@@ -8,9 +9,13 @@ class FormsAdmin(admin.ModelAdmin):
     """ """
 
     fieldsets = (
-        (None, {
-            "fields": ("title", "description", "confirmationMsg", "only_logged_in")
-        }),
+        (
+            None,
+            {
+                "fields":
+                ("title", "description", "confirmationMsg", "only_logged_in")
+            },
+        ),
         (
             "Техническая информация",
             {
