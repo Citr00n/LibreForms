@@ -7,25 +7,31 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('forms', '0007_alter_choices_options_alter_forms_options_and_more'),
+        ("forms", "0007_alter_choices_options_alter_forms_options_and_more"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='questions',
-            name='only_one',
+            model_name="questions",
+            name="only_one",
             field=models.BooleanField(default=False),
         ),
         migrations.AlterField(
-            model_name='choices',
-            name='question',
+            model_name="choices",
+            name="question",
             field=models.ForeignKey(
-                on_delete=django.db.models.deletion.CASCADE, related_name='choices', to='forms.questions'),
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="choices",
+                to="forms.questions",
+            ),
         ),
         migrations.AlterField(
-            model_name='questions',
-            name='form',
+            model_name="questions",
+            name="form",
             field=models.ForeignKey(
-                on_delete=django.db.models.deletion.CASCADE, related_name='questions', to='forms.forms'),
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="questions",
+                to="forms.forms",
+            ),
         ),
     ]

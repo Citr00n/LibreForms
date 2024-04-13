@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('forms', '0011_alter_questions_type'),
+        ("forms", "0011_alter_questions_type"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='questions',
-            name='required',
+            model_name="questions",
+            name="required",
             field=models.BooleanField(default=False),
         ),
     ]

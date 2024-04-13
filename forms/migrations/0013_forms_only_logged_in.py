@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('forms', '0012_questions_required'),
+        ("forms", "0012_questions_required"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='forms',
-            name='only_logged_in',
+            model_name="forms",
+            name="only_logged_in",
             field=models.BooleanField(default=False),
         ),
     ]
