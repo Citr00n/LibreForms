@@ -19,11 +19,13 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='choices',
             name='question',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='choices', to='forms.questions'),
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, related_name='choices', to='forms.questions'),
         ),
         migrations.AlterField(
             model_name='questions',
             name='form',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='questions', to='forms.forms'),
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, related_name='questions', to='forms.forms'),
         ),
     ]

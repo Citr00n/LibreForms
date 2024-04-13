@@ -17,6 +17,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='questions',
             name='question_type',
-            field=models.CharField(choices=[('Один вариант', 'radio'), ('Много вариантов', 'checkbox'), ('Текст', 'text')], max_length=20),
+            field=models.CharField(choices=[('Один вариант', 'radio'), (
+                'Много вариантов', 'checkbox'), ('Текст', 'text')], max_length=20),
         ),
     ]

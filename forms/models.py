@@ -86,7 +86,8 @@ class UserAnswers(models.Model):
                           default=uuid.uuid4,
                           editable=False,
                           unique=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, blank=True, null=True)
     question = models.ForeignKey(Questions, on_delete=models.CASCADE)
     choice = models.ForeignKey(Choices, on_delete=models.CASCADE)
 

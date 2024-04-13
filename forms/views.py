@@ -58,14 +58,17 @@ def form_view(req, form_id, *args, **kwargs):
         }
         choices = {}
         for question in questions:
-            choices[question] = get_object_or_404(Choices, id=req.POST.get(str(question.id)))
+            choices[question] = get_object_or_404(
+                Choices, id=req.POST.get(str(question.id)))
         if req.user.is_authenticated:
             for question in choices:
-                answer = UserAnswers.objects.create(user=req.user, question=question, choice=choices[question])
+                answer = UserAnswers.objects.create(
+                    user=req.user, question=question, choice=choices[question])
                 answer.save()
         else:
             for question in choices:
-                answer = UserAnswers.objects.create(question=question, choice=choices[question])
+                answer = UserAnswers.objects.create(
+                    question=question, choice=choices[question])
                 answer.save()
         if form.only_logged_in:
             if req.user.is_authenticated:
