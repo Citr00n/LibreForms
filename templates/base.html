@@ -16,7 +16,7 @@
     </head>
 
     <body>
-    <div class="rounded-4 container shadow" style="background: linear-gradient(180deg, rgba(255, 0, 0, 0.15), rgba(255, 255, 255, 0)); margin-top: 0.75em;">
+    <div class="rounded-4 container shadow" style="background: linear-gradient(180deg, rgba(255, 0, 0, 0.15), rgba(255, 0, 0, 0.05));); margin-top: 0.75em;">
             <nav class="navbar navbar-expand-md py-3">
                 <div class="container"><a class="navbar-brand d-flex align-items-center" href="/"><span class="bs-icon-sm bs-icon-rounded d-flex justify-content-center align-items-center me-2 bs-icon"><img src="{% static 'img/icon.png' %}" height="34" /></span><span>LibreForms</span></a><button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navcol-5"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                     <div id="navcol-5" class="collapse navbar-collapse">
@@ -28,12 +28,11 @@
                         {% if user.is_authenticated %}
 
                             <div class="btn-group open">
-                                <a class="btn btn-danger ms-md-2" role="button" href="/user/">{{ user.username }}</a>
+                                <a class="btn btn-danger ms-md-2" role="button" href="/admin/">{{ user.username }}</a>
                                 <button class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="true" type="button"></button>
                                 <div class="dropdown-menu dropdown-menu-dark">
-                                    <a class="dropdown-item" href="logout">Выйти</a>
-                                    <a class="dropdown-item" href="#">Second Item</a>
-                                    <a class="dropdown-item" href="#">Third Item</a></div>
+                                    <a class="dropdown-item" href="/user/logout">Выйти</a>
+                                    <a class="dropdown-item" href="/admin/password_change/">Сменить пароль</a>
                             </div>
                         {% else %}
                         <a class="btn btn-danger ms-md-2" role="button" href="/user/login">Войти</a>

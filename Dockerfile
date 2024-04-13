@@ -1,4 +1,4 @@
 FROM ubuntu:latest
-LABEL authors="citro"
+LABEL authors="citr0n"
 
 ENTRYPOINT ["top", "-b"]
