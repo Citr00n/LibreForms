@@ -49,13 +49,14 @@
                                     <input type="checkbox" class="form-check-input" name="{{ question.id }}" value="{{ choice.id }}"
                                             {% if question.required %} required {% endif %}>
                                             {{ choice.choice }}
-                                {% elif question.type == 'text' %}
-                                    <textarea class="form-control" name="{{ question }}"></textarea>
                                 {% endif %}
                             </label>
                             <br>
                             {% endfor %}
                         </fieldset>
+                    {% if question.type == 'text' %}
+                        <textarea class="form-control" name="{{ question.id }}" {% if question.required %} required {% endif %}></textarea>
+                    {% endif %}
                     </div>
                 </div>
             </div>

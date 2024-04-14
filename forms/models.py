@@ -92,7 +92,9 @@ class UserAnswers(models.Model):
                              blank=True,
                              null=True)
     question = models.ForeignKey(Questions, on_delete=models.CASCADE)
-    choice = models.ForeignKey(Choices, on_delete=models.CASCADE)
+    choice = models.ForeignKey(Choices, on_delete=models.CASCADE, blank=True, null=True)
+    text_choice = models.TextField(blank=True, max_length=10000, null=True)
+    session_id = models.UUIDField(editable=False)
 
 
 # Форма <-- Много вопросов
