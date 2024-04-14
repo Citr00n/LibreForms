@@ -7,7 +7,8 @@ import plotly.express as px
 import plotly.graph_objs as go
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404
+from django.shortcuts import render
 from plotly.subplots import make_subplots
 
 from .models import *
