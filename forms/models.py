@@ -100,7 +100,8 @@ class Answers(models.Model):
                              on_delete=models.CASCADE,
                              blank=True,
                              null=True, related_name='answers')
-    question = models.ForeignKey(Questions, on_delete=models.CASCADE, related_name='answers')
+    question = models.ForeignKey(
+        Questions, on_delete=models.CASCADE, related_name='answers')
     choice = models.TextField(max_length=10000)
     session_id = models.UUIDField(editable=False)
 
