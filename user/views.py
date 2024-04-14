@@ -98,7 +98,8 @@ def signup_view(req):
                 user = User.objects.create_user(
                     username=req.POST["username"],
                     password=req.POST["password"],
-                    is_staff=True, is_superuser=superuser,
+                    is_staff=True,
+                    is_superuser=superuser,
                 )
                 user.save()
                 group = Group.objects.get(name="default")

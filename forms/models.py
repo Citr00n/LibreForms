@@ -30,7 +30,7 @@ class Forms(models.Model):
     only_logged_in = models.BooleanField(default=False)
 
     def __str__(self):
-        return f'{self.title}'
+        return f"{self.title}"
 
 
 class Questions(models.Model):
@@ -63,7 +63,7 @@ class Questions(models.Model):
     creator = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.question} ({self.form}) [{self.question_types[self.type]}]'
+        return f"{self.question} ({self.form}) [{self.question_types[self.type]}]"
 
 
 class Choices(models.Model):
@@ -86,7 +86,7 @@ class Choices(models.Model):
     creator = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.choice} [{self.question.form.title}: {self.question.question} / {self.question.question_types[self.question.type]}]'
+        return f"{self.choice} [{self.question.form.title}: {self.question.question} / {self.question.question_types[self.question.type]}]"
 
 
 class Answers(models.Model):
@@ -99,8 +99,11 @@ class Answers(models.Model):
     user = models.ForeignKey(User,
                              on_delete=models.CASCADE,
                              blank=True,
-                             null=True, related_name='answers')
-    question = models.ForeignKey(Questions, on_delete=models.CASCADE, related_name='answers')
+                             null=True,
+                             related_name="answers")
+    question = models.ForeignKey(Questions,
+                                 on_delete=models.CASCADE,
+                                 related_name="answers")
     choice = models.TextField(max_length=10000)
     session_id = models.UUIDField(editable=False)
 
