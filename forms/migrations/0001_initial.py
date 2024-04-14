@@ -31,12 +31,13 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 ("title", models.CharField(max_length=255)),
-                ("description", models.TextField(blank=True, max_length=10000)),
+                ("description", models.TextField(blank=True,
+                                                 max_length=10000)),
                 (
                     "confirmationMsg",
-                    models.TextField(
-                        blank=True, default="Ваш ответ был засчитан.", max_length=255
-                    ),
+                    models.TextField(blank=True,
+                                     default="Ваш ответ был засчитан.",
+                                     max_length=255),
                 ),
                 ("createdAt", models.DateTimeField(auto_now_add=True)),
                 ("updatedAt", models.DateTimeField(auto_now=True)),
@@ -69,7 +70,8 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 ("question", models.CharField(max_length=200)),
-                ("description", models.TextField(blank=True, max_length=10000)),
+                ("description", models.TextField(blank=True,
+                                                 max_length=10000)),
                 (
                     "type",
                     models.CharField(
