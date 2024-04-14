@@ -19,9 +19,11 @@ from django.urls import include
 from django.urls import path
 from django.views.generic import RedirectView
 
+from user.views import *
 from utils.views import *
 
 urlpatterns = [
+    path("admin/logout/", logout_view, name="logout"),
     path("admin/", admin.site.urls),
     path("form/", include("forms.urls")),
     path("user/", include("user.urls")),

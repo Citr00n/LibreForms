@@ -67,7 +67,7 @@ class QuestionsAdmin(admin.ModelAdmin):
 
     fieldsets = (
         (None, {
-            "fields": ("question", "type", "description", "form")
+            "fields": ("question", "type", "description", "form", "required")
         }),
         ("Техническая информация", {
             "fields": ("id", "creator")
@@ -174,4 +174,4 @@ class ChoicesAdmin(admin.ModelAdmin):
 admin.site.register(Forms, FormsAdmin)
 admin.site.register(Questions, QuestionsAdmin)
 admin.site.register(Choices, ChoicesAdmin)
-admin.site.register(UserAnswers)
+admin.site.register(Answers)

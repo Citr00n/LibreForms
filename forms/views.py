@@ -1,3 +1,5 @@
+import uuid
+
 import numpy as np
 import pandas as pd
 import plotly
@@ -25,7 +27,6 @@ def form_view(req, form_id, *args, **kwargs):
     """
     form = get_object_or_404(Forms, id=form_id)
     questions = form.questions.all()
-    nq = len(list(questions))
     nc = {}
     for i in questions:
         nc[i] = len(list(i.choices.all()))
@@ -57,21 +58,46 @@ def form_view(req, form_id, *args, **kwargs):
             "confirm": True,
         }
         choices = {}
+        session_id = uuid.uuid4()
         for question in questions:
-            choices[question] = get_object_or_404(Choices,
-                                                  id=req.POST.get(
-                                                      str(question.id)))
+            if question.type != "checkbox":
+                choices[question] = req.POST.get(str(question.id))
+            elif question.type == "checkbox":
+                items = []
+                i = 0
+                for _ in question.choices.all():
+                    items.append(req.POST.get(f"{question.id}[{i}]"))
+                    i += 1
+                choices[question] = items
         if req.user.is_authenticated:
             for question in choices:
-                answer = UserAnswers.objects.create(user=req.user,
-                                                    question=question,
-                                                    choice=choices[question])
-                answer.save()
+                if type(choices[question]) is not list:
+                    answer = Answers.objects.create(
+                        user=req.user,
+                        question=question,
+                        choice=choices[question],
+                        session_id=session_id,
+                    )
+                    answer.save()
+                else:
+                    for choice in choices[question]:
+                        answer = Answers.objects.create(
+                            user=req.user,
+                            question=question,
+                            choice=choice,
+                            session_id=session_id,
+                        )
+                        answer.save()
         else:
             for question in choices:
-                answer = UserAnswers.objects.create(question=question,
-                                                    choice=choices[question])
-                answer.save()
+                if question is not list:
+                    answer = Answers.objects.create(
+                        question=question,
+                        choice=choices[question],
+                        session_id=session_id,
+                    )
+                    answer.save()
+
         if form.only_logged_in:
             if req.user.is_authenticated:
                 return render(req, "form.html", context=context)
