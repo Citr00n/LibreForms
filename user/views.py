@@ -65,7 +65,7 @@ def logout_view(req):
     if req.user.is_authenticated is True:
         if req.method == "GET":
             return render(req, "logout.html", context={"title": "Выход"})
-        elif req.method == "POST":
+        elif req.method == "POST" and req.path != "/admin/logout":
             logout(req)
             return redirect("login")
     else:
