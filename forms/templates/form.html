@@ -42,11 +42,11 @@
                             {% for choice in question.choices.all %}
                             <label>
                                 {% if question.type == 'radio' %}
-                                    <input type="radio" class="form-check-input" name="{{ question.id }}" value="{{ choice.id }}"
+                                    <input type="radio" class="form-check-input" name="{{ question.id }}" value="{{ choice.choice }}"
                                             {% if question.required %} required {% endif %}>
                                     {{ choice.choice }}
                                 {% elif question.type == 'checkbox' %}
-                                    <input type="checkbox" class="form-check-input" name="{{ question.id }}" value="{{ choice.id }}"
+                                    <input type="checkbox" class="form-check-input" name="{{ question.id }}[{{ forloop.counter0 }}]" value="{{ choice.choice }}"
                                             {% if question.required %} required {% endif %}>
                                             {{ choice.choice }}
                                 {% endif %}
