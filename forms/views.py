@@ -109,7 +109,7 @@ def analytics_view(req, form_id, *args, **kwargs):
     charts = {}
     for question in form.questions.all():
         a = []
-        for item in Answers.objects.filter(question=question).values('choice'):
+        for item in Answers.objects.filter(question=question).values("choice"):
             a.append(item["choice"])
         occ = Counter(a)
         choice = []
@@ -117,9 +117,8 @@ def analytics_view(req, form_id, *args, **kwargs):
         for k, v in occ.items():
             choice.append(k)
             count.append(v)
-        print(f'{choice}//{count}')
-        chart = plot_piechart(names=choice, values=count,
-                              title=f'{question.question}')
+        print(f"{choice}//{count}")
+        chart = plot_piechart(names=choice, values=count, title=f"{question.question}")
         charts[question.id] = chart
 
-    return render(req, "analytics.html", context={'charts': charts, 'form': form})
+    return render(req, "analytics.html", context={"charts": charts, "form": form})
