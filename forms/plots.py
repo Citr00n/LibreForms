@@ -5,9 +5,9 @@ from plotly.offline import plot
 def plot_piechart(names, values, title):
     """
 
-    :param names: 
-    :param values: 
-    :param title: 
+    :param names:
+    :param values:
+    :param title:
 
     """
     fig = go.Figure(data=go.Pie(name="PieChart", values=values, labels=names))
