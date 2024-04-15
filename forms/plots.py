@@ -14,7 +14,8 @@ def plot_piechart(names, values, title):
         margin=dict(l=40, r=20, t=30, b=40),
         paper_bgcolor='rgba(0, 0, 0, 0)',
         font=dict(color='white'),
-        title=dict(font=dict(size=30), x=0.47, y=0.95, xanchor='center', yanchor='middle'),
+        title=dict(font=dict(size=30), x=0.47, y=0.95,
+                   xanchor='center', yanchor='middle'),
     )
 
     piechart = plot({'data': fig}, output_type='div')

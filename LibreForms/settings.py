@@ -64,7 +64,6 @@ MIDDLEWARE = [
 ROOT_URLCONF = "LibreForms.urls"
 
 
-
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
