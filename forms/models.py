@@ -106,10 +106,3 @@ class Answers(models.Model):
                                  related_name="answers")
     choice = models.TextField(max_length=10000)
     session_id = models.UUIDField(editable=False)
-
-
-# Форма <-- Много вопросов
-# Вопрос <-- Много вариантов
-# На одну форму по несколько строк вопросов   | Благодаря uuid
-# На один вопрос по несколько строк вариантов |
-#
