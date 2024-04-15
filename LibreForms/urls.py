@@ -27,6 +27,7 @@ urlpatterns = [
     path("form/", include("forms.urls")),
     path("user/", include("user.urls")),
     path("", index, name="index"),
+    path("django_plotly_dash/", include("django_plotly_dash.urls")),
     path("__debug__/", include("debug_toolbar.urls")),
 ]
 

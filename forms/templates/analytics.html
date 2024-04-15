@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for chart in charts.values %}
+    <div class="d-flex align-center justify-content-center my-3 border rounded-4 border-1 px-0" style="background: linear-gradient(180deg, rgba(255, 0, 0, 0.15), rgba(255, 0, 0, 0.05));">
+        {{ chart | safe }}
+    </div>
+    {% endfor %}
+{% endblock %}

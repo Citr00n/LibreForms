@@ -1,17 +1,14 @@
 import uuid
-
-import numpy as np
-import pandas as pd
-import plotly
-import plotly.express as px
-import plotly.graph_objs as go
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render
 from plotly.subplots import make_subplots
+from collections import Counter
 
 from .models import *
+from .plots import *
+
 
 # Create your views here.
 
@@ -105,3 +102,23 @@ def form_view(req, form_id, *args, **kwargs):
             else:
                 raise PermissionDenied
         return render(req, "form.html", context=context)
+
+
+def analytics_view(req, form_id, *args, **kwargs):
+    form = Forms.objects.get(id=form_id)
+    charts = {}
+    for question in form.questions.all():
+        a = []
+        for item in Answers.objects.filter(question=question).values('choice'):
+            a.append(item["choice"])
+        occ = Counter(a)
+        choice = []
+        count = []
+        for k, v in occ.items():
+            choice.append(k)
+            count.append(v)
+        print(f'{choice}//{count}')
+        chart = plot_piechart(names=choice, values=count, title=f'{question.question}')
+        charts[question.id] = chart
+
+    return render(req, "analytics.html", context={'charts': charts, 'form': form})

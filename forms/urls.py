@@ -6,4 +6,5 @@ from .views import *
 
 urlpatterns = [
     path("<uuid:form_id>/", form_view, name="form"),
+    path("<uuid:form_id>/analytics", analytics_view, name="analytics"),
 ]

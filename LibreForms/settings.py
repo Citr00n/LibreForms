@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "utils.apps.UtilsConfig",
     "user.apps.UserConfig",
     "debug_toolbar",
+    "django_plotly_dash.apps.DjangoPlotlyDashConfig",
 ]
 
 MIDDLEWARE = [
@@ -61,6 +62,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "LibreForms.urls"
+
+
 
 TEMPLATES = [
     {
@@ -157,3 +160,12 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+
+PLOTLY_COMPONENTS = [
+    'dash_core_components',
+    'dash_html_components',
+    'dash_renderer',
+    'dpd_components'
+]
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
