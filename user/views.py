@@ -91,9 +91,9 @@ def signup_view(req):
         elif req.method == "POST":
             if not list(User.objects.all()):
                 superuser = True
+
             else:
                 superuser = False
-
             try:
                 user = User.objects.create_user(
                     username=req.POST["username"],
