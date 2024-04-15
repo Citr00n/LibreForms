@@ -46,8 +46,7 @@
                                             {% if question.required %} required {% endif %}>
                                     {{ choice.choice }}
                                 {% elif question.type == 'checkbox' %}
-                                    <input type="checkbox" class="form-check-input" name="{{ question.id }}[{{ forloop.counter0 }}]" value="{{ choice.choice }}"
-                                            {% if question.required %} required {% endif %}>
+                                    <input type="checkbox" class="form-check-input" name="{{ question.id }}[{{ forloop.counter0 }}]" value="{{ choice.choice }}">
                                             {{ choice.choice }}
                                 {% endif %}
                             </label>
@@ -63,7 +62,7 @@
 
         </div>
         {% endfor %}
-    <button class="btn btn-primary d-flex, mx-auto" type="submit" style="display: block">Button</button>
+    <button class="btn btn-danger d-flex, mx-auto mb-5" type="submit" style="display: block">ОТПРАВИТЬ</button>
     </form>
 </section>
  {% endif %}

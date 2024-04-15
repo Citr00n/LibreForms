@@ -81,13 +81,14 @@ def form_view(req, form_id, *args, **kwargs):
                     answer.save()
                 else:
                     for choice in choices[question]:
-                        answer = Answers.objects.create(
-                            user=req.user,
-                            question=question,
-                            choice=choice,
-                            session_id=session_id,
-                        )
-                        answer.save()
+                        if choice is not None:
+                            answer = Answers.objects.create(
+                                user=req.user,
+                                question=question,
+                                choice=choice,
+                                session_id=session_id,
+                            )
+                            answer.save()
         else:
             for question in choices:
                 if question is not list:
