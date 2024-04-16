@@ -20,8 +20,6 @@ services:
       - key: RENDER
         value: 1
       - key: RENDER_DATABASE_URL
-        fromDatabase:
-          name: lfdb
-          property: connectionString
+        sync: false
       - key: WEB_CONCURRENCY
         value: 4
