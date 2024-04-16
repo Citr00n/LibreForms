@@ -43,20 +43,6 @@ def login_view(req):
             raise PermissionDenied
 
 
-def home_view(req):
-    """
-
-    :param req:
-
-    """
-    if req.user.is_authenticated is True:
-        return render(req,
-                      "userhome.html",
-                      context={"title": req.user.username})
-    else:
-        return redirect("login")
-
-
 def logout_view(req):
     """
 

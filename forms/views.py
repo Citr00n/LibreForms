@@ -3,12 +3,13 @@ from collections import Counter
 
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from django.shortcuts import render
 from plotly.subplots import make_subplots
 
 from .models import *
 from .plots import *
+
 
 # Create your views here.
 
@@ -131,9 +132,27 @@ def analytics_view(req, form_id, *args, **kwargs):
                               title=f"{question.question}")
         charts[question.id] = chart
 
-    return render(req,
-                  "analytics.html",
-                  context={
-                      "charts": charts,
-                      "form": form
-                  })
+    if req.user == form.creator:
+        return render(req,
+                      "analytics.html",
+                      context={
+                          "charts": charts,
+                          "form": form
+                      })
+    else:
+        raise PermissionDenied
+
+
+def home_view(req):
+    """
+
+    :param req:
+
+    """
+    if req.user.is_authenticated is True:
+        forms = Forms.objects.filter(creator=req.user)
+        return render(req,
+                      "userhome.html",
+                      context={"title": req.user.username, "forms": forms})
+    else:
+        return redirect("login")
