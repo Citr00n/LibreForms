@@ -1,6 +1,8 @@
-from django.urls import path, include, re_path
-from . import views
+from django.urls import include, path, re_path
+
 from forms.views import *
+
+from . import views
 
 urlpatterns = [
     path("login", views.login_view, name="login"),
