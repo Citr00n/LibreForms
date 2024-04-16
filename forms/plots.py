@@ -3,7 +3,14 @@ from plotly.offline import plot
 
 
 def plot_piechart(names, values, title):
-    fig = go.Figure(data=go.Pie(name='PieChart', values=values, labels=names))
+    """
+
+    :param names:
+    :param values:
+    :param title:
+
+    """
+    fig = go.Figure(data=go.Pie(name="PieChart", values=values, labels=names))
 
     fig.update_layout(
         autosize=False,
@@ -12,10 +19,14 @@ def plot_piechart(names, values, title):
         title_text=title,
         template=None,
         margin=dict(l=40, r=20, t=30, b=40),
-        paper_bgcolor='rgba(0, 0, 0, 0)',
-        font=dict(color='white'),
-        title=dict(font=dict(size=30), x=0.47, y=0.95, xanchor='center', yanchor='middle'),
+        paper_bgcolor="rgba(0, 0, 0, 0)",
+        font=dict(color="white"),
+        title=dict(font=dict(size=30),
+                   x=0.47,
+                   y=0.95,
+                   xanchor="center",
+                   yanchor="middle"),
     )
 
-    piechart = plot({'data': fig}, output_type='div')
+    piechart = plot({"data": fig}, output_type="div")
     return piechart

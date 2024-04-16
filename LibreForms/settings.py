@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import os
 import subprocess
 from pathlib import Path
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -63,8 +64,6 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "LibreForms.urls"
 
-
-
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
@@ -85,7 +84,7 @@ WSGI_APPLICATION = "LibreForms.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-if os.getenv('ENABLE_POSTGRES') == '1':
+if os.getenv("ENABLE_POSTGRES") == "1":
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql",
@@ -162,10 +161,10 @@ INTERNAL_IPS = [
 ]
 
 PLOTLY_COMPONENTS = [
-    'dash_core_components',
-    'dash_html_components',
-    'dash_renderer',
-    'dpd_components'
+    "dash_core_components",
+    "dash_html_components",
+    "dash_renderer",
+    "dpd_components",
 ]
 
-X_FRAME_OPTIONS = 'SAMEORIGIN'
+X_FRAME_OPTIONS = "SAMEORIGIN"

@@ -1,7 +1,9 @@
 from django.contrib.auth import authenticate
 from django.contrib.auth import login
 from django.contrib.auth import logout
-from django.contrib.auth.models import Group, Permission, User
+from django.contrib.auth.models import Group
+from django.contrib.auth.models import Permission
+from django.contrib.auth.models import User
 from django.core.exceptions import PermissionDenied
 from django.db import IntegrityError
 from django.shortcuts import redirect
@@ -90,7 +92,7 @@ def signup_view(req):
         elif req.method == "POST":
             if not list(User.objects.all()):
                 superuser = True
-                default = Group.objects.create(name='default')
+                default = Group.objects.create(name="default")
                 print(default)
                 default.save()
                 for i in range(25, 37, 1):
