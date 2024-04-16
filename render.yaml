@@ -1,0 +1,10 @@
+services:
+  - type: web
+    plan: free
+    name: LibreForms
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "uvicorn 'LibreForms.asgi:application' --host=0.0.0.0 --port=8000"
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
