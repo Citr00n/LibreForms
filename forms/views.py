@@ -180,7 +180,7 @@ def export_view(req, form_id, question_id, *args, **kwargs):
         raise PermissionDenied
 
     response = HttpResponse(content_type='text/csv')
-    response['Content-Disposition'] = f'attachment; filename="[{question.question}]-export.csv"'
+    response['Content-Disposition'] = f'attachment; filename="{question.id}-export.csv"'
 
     writer = csv.writer(response, delimiter=';')
     writer.writerow(['user', 'question', 'choice'])
@@ -188,7 +188,6 @@ def export_view(req, form_id, question_id, *args, **kwargs):
     # users = Library.objects.all().values_list('employee', 'IG', 'follower', 'email', 'website', 'DA', 'youtube_url',
     #                                           'youtube_name', 'subscriber', 'type', 'country')
     answers = question.answers.all().values_list('user__username', 'question__question', 'choice')
-    print(answers)
 
     for answer in answers:
         writer.writerow(answer)
