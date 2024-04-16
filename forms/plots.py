@@ -17,7 +17,7 @@ def plot_piechart(names, values, title):
         width=500,
         height=500,
         title_text=title,
-        template=None,
+        template='seaborn',
         margin=dict(l=40, r=20, t=30, b=40),
         paper_bgcolor="rgba(0, 0, 0, 0)",
         font=dict(color="white"),
