@@ -25,12 +25,7 @@ def login_view(req):
 
     elif req.method == "GET":
         form = forms.UserForm()
-        return render(req,
-                      "login.html",
-                      context={
-                          "title": "Вход",
-                          "form": form
-                      })
+        return render(req, "login.html", context={"title": "Вход", "form": form})
 
     elif req.method == "POST":
         username = req.POST["username"]
@@ -68,12 +63,9 @@ def signup_view(req):
     if req.user.is_authenticated is not True:
         if req.method == "GET":
             form = forms.UserForm()
-            return render(req,
-                          "signup.html",
-                          context={
-                              "title": "Регистрация",
-                              "form": form
-                          })
+            return render(
+                req, "signup.html", context={"title": "Регистрация", "form": form}
+            )
 
         elif req.method == "POST":
             if not list(User.objects.all()):
