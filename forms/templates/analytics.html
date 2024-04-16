@@ -17,6 +17,9 @@
             </div>
         </div>
     </section>
+    <div class="d-flex container alert alert-warning justify-content-center align-items-center" role="alert">
+      Графики лучше смотрятся на ПК/при включении "Версии для ПК"!
+    </div>
     {% for chart in charts.values %}
     <div class="d-flex align-center justify-content-center my-3 rounded-4 px-0 shadow container" style="background: linear-gradient(180deg, rgba(255, 0, 0, 0.15), rgba(255, 0, 0, 0.05));">
         {{ chart | safe }}
