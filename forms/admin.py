@@ -149,7 +149,8 @@ class ChoicesAdmin(admin.ModelAdmin):
     list_display_links = ('choice', 'id')
     list_filter = ('question__question', 'question__form', 'question__type')
     list_per_page = 5
-    ordering = ['choice', 'question', 'question__form', 'question__type', 'creator']
+    ordering = ['choice', 'question',
+                'question__form', 'question__type', 'creator']
     search_fields = ('choice', 'id', 'question__question')
 
     def get_form(self, request, obj=None, **kwargs):
