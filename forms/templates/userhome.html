@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container my-5" style="">
+    <div class="row">
+        <div class="col-md-12 d-flex justify-content-center mt-2" style="padding-bottom: 0.5em;">
+            <h1 style="margin-right: 0.3em">Здравствуйте, </h1> <h1 class="text-danger">{{ user.username }}</h1> <h1>!</h1> <br>
+
+        </div>
+
+    </div>
+    <div class="d-flex align-center justify-content-center my-3">
+        <a class="btn btn-warning px-2" href="/admin/">Панель администратора</a>
+    </div>
+    <div class="d-flex align-center justify-content-center my-3">
+        <a class="btn btn-danger px-2" href="/admin/password_change/">Сменить пароль</a>
+        <div style="width: 0.5em"></div>
+        <a class="btn btn-danger px-2" href="/user/logout">Выйти</a>
+    </div>
+    <div class="row">
+    </div>
+</div>
+
+<div class="container shadow rounded-4" style="background: linear-gradient(180deg, rgba(255, 0, 0, 0.15), rgba(255, 0, 0, 0.05));">
+    <p class="h3 pb-3 pt-2 mx-1" style="">Ваши формы:</p>
+    {% for form in forms %}
+        <div class="list-group list-group-horizontal pb-2 mb-2">
+        <a href="/form/{{ form.id }}" class="d-flex list-group-item list-group-item-action btn btn-outline-danger rounded-2 justify-content-center align-items-center" style="max-width: 15em">
+            <h3 class="">{{ form.title }}</h3>
+        </a>
+            <div style="width: 0.25em"></div>
+            <div class="border d-none d-md-block" style="width: 1px"></div>
+            <div style="width: 0.25em"></div>
+        <a href="/form/{{ form.id }}/analytics" class="d-flex list-group-item list-group-item-action btn btn-outline-warning rounded-2 justify-content-center align-items-center" style="max-width: 15em">Аналитика формы "{{ form.title }}"</a>
+        <div style="width: 0.5em"></div>
+        <a href="/form/{{ form.id }}/export" class="d-flex list-group-item list-group-item-action btn btn-outline-primary rounded-2 justify-content-center align-items-center" style="max-width: 15em">Экспорт данных из формы "{{ form.title }}"</a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

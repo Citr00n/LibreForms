@@ -17,8 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include
 from django.urls import path
-from django.views.generic import RedirectView
 
+from forms.views import *
 from user.views import *
 from utils.views import *
 
@@ -28,6 +28,7 @@ urlpatterns = [
     path("form/", include("forms.urls")),
     path("user/", include("user.urls")),
     path("", index, name="index"),
+    path("django_plotly_dash/", include("django_plotly_dash.urls")),
     path("__debug__/", include("debug_toolbar.urls")),
 ]
 

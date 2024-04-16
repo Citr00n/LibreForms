@@ -4,8 +4,8 @@ from django.shortcuts import render
 # Create your views here.
 
 def index(request):
-    title = 'Доделай страницу дебил'
-    return render(request, 'error.html', context={'title': title})
+    title = 'Главная'
+    return render(request, 'index.html', context={'title': title})
 
 
 def not_found(req, *args, **kwargs):

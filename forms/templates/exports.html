@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="d-flex justify-content-center mt-5"><h1 class="align-center">Экспорт данных</h1></div>
+
+    <div class="container shadow rounded-4 mt-5" style="margin-top: 2em; background: linear-gradient(180deg, rgba(255, 0, 0, 0.15), rgba(255, 0, 0, 0.05));">
+        <div class="list-group py-3">
+            {% for question in form.questions.all %}
+                <a class="d-flex list-group-item list-group-item-action btn-outline-primary btn my-1 rounded-2 justify-content-center" href="{{ question.id }}">Экспортировать ответы на вопрос "{{ question.question }}"</a>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

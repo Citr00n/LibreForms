@@ -10,7 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
+import subprocess
 from pathlib import Path
+
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -19,12 +24,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-1-u25@lvf8xu*9seuo3yj#01=7pqpyyox+tnfz^=djvonl+s1k"
-
+if os.getenv("SECRET_KEY"):
+    SECRET_KEY = os.getenv("SECRET_KEY")
+else:
+    SECRET_KEY = "django-insecure-1-u25@lvf8xu*9seuo3yj#01=7pqpyyox+tnfz^=djvonl+s1k"
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if os.getenv("ENVIRONMENT") in ["dev", "debug", "DEV", "DEBUG"]:
+    DEBUG = True
+else:
+    DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+if os.getenv("ALLOWED_HOSTS"):
+    ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(" ")
+else:
+    ALLOWED_HOSTS = ["*"]
 DEBUG_PROPAGATE_EXCEPTIONS = True
 
 # Application definition
@@ -40,6 +53,7 @@ INSTALLED_APPS = [
     "utils.apps.UtilsConfig",
     "user.apps.UserConfig",
     "debug_toolbar",
+    "django_plotly_dash.apps.DjangoPlotlyDashConfig",
 ]
 
 MIDDLEWARE = [
@@ -76,17 +90,24 @@ WSGI_APPLICATION = "LibreForms.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "libreforms",
-        "USER": "libreforms",
-        "PASSWORD": "libreforms",
-        "HOST": "localhost",
-        "PORT": "",
+if os.getenv("ENABLE_POSTGRES") == "1":
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": os.getenv("POSTGRES_NAME"),
+            "USER": os.getenv("POSTGRES_USER"),
+            "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
+            "HOST": os.getenv("POSTGRES_HOST"),
+            "PORT": os.getenv("POSTGRES_PORT"),
+        }
     }
-}
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
 
 AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
@@ -144,3 +165,12 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+
+PLOTLY_COMPONENTS = [
+    "dash_core_components",
+    "dash_html_components",
+    "dash_renderer",
+    "dpd_components",
+]
+
+X_FRAME_OPTIONS = "SAMEORIGIN"
