@@ -127,11 +127,18 @@ def analytics_view(req, form_id, *args, **kwargs):
             choice.append(k)
             count.append(v)
         print(f"{choice}//{count}")
-        chart = plot_piechart(names=choice, values=count, title=f"{question.question}")
+        chart = plot_piechart(names=choice,
+                              values=count,
+                              title=f"{question.question}")
         charts[question.id] = chart
 
     if req.user == form.creator:
-        return render(req, "analytics.html", context={"charts": charts, "form": form})
+        return render(req,
+                      "analytics.html",
+                      context={
+                          "charts": charts,
+                          "form": form
+                      })
     else:
         raise PermissionDenied
 
@@ -144,8 +151,11 @@ def home_view(req):
     """
     if req.user.is_authenticated is True:
         forms = Forms.objects.filter(creator=req.user)
-        return render(
-            req, "userhome.html", context={"title": req.user.username, "forms": forms}
-        )
+        return render(req,
+                      "userhome.html",
+                      context={
+                          "title": req.user.username,
+                          "forms": forms
+                      })
     else:
         return redirect("login")
