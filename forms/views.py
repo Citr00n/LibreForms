@@ -3,13 +3,13 @@ from collections import Counter
 
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404
+from django.shortcuts import redirect
 from django.shortcuts import render
 from plotly.subplots import make_subplots
 
 from .models import *
 from .plots import *
-
 
 # Create your views here.
 
@@ -152,6 +152,9 @@ def home_view(req):
         forms = Forms.objects.filter(creator=req.user)
         return render(req,
                       "userhome.html",
-                      context={"title": req.user.username, "forms": forms})
+                      context={
+                          "title": req.user.username,
+                          "forms": forms
+                      })
     else:
         return redirect("login")
