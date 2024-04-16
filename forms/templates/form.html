@@ -29,7 +29,7 @@
                     <div class="d-flex align-items-center align-items-md-start align-items-xl-center">
                         <div>
                             <h4>{{ question.question }}</h4>
-                            <p>{{ question.description }}</p>
+                            <p class="pt-2">{{ question.description }}</p>
                         </div>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                 <div class="col col-md-5 mx-auto p-3">
                     <div class="my-2">
                         <fieldset>
-                            <legend class="h4 m-1">Выберите ответ:</legend>
+                            <legend class="h4 pb-sm-2 pb-md-0">Выберите ответ:</legend>
                             {% for choice in question.choices.all %}
                             <label>
                                 {% if question.type == 'radio' %}
