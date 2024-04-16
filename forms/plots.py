@@ -6,7 +6,7 @@ def plot_piechart(names, values, title):
     """
 
     :param names: param values:
-    :param title:
+    :param title: param values:
     :param values:
 
     """

@@ -108,7 +108,7 @@ def analytics_view(req, form_id, *args, **kwargs):
     """
 
     :param req: param form_id:
-    :param form_id:
+    :param form_id: param *args:
     :param *args:
     :param **kwargs:
 
