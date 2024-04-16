@@ -90,20 +90,9 @@ WSGI_APPLICATION = "LibreForms.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-if os.getenv("ENABLE_POSTGRES") == "1":
+if os.getenv("POSTGRES_URL"):
     DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.postgresql",
-            "NAME": os.getenv("POSTGRES_NAME"),
-            "USER": os.getenv("POSTGRES_USER"),
-            "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
-            "HOST": os.getenv("POSTGRES_HOST"),
-            "PORT": os.getenv("POSTGRES_PORT"),
-        }
-    }
-elif os.getenv("RENDER_DATABASE_URL") == "1":
-    DATABASES = {
-        'default': dj_database_url.parse(url=os.getenv("RENDER_DATABASE_URL"),
+        'default': dj_database_url.parse(url=os.getenv("POSTGRES_URL"),
                                          conn_max_age=600,
                                          conn_health_checks=True,)
     }

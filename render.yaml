@@ -19,7 +19,7 @@ services:
         value: 3.12.2
       - key: RENDER
         value: 1
-      - key: RENDER_DATABASE_URL
+      - key: POSTGRES_URL
         sync: false
       - key: WEB_CONCURRENCY
         value: 4
