@@ -12,26 +12,21 @@ class FormsAdmin(admin.ModelAdmin):
     fieldsets = (
         (
             None,
-            {
-                "fields":
-                    ("title", "description", "confirmationMsg", "only_logged_in")
-            },
+            {"fields": ("title", "description", "confirmationMsg", "only_logged_in")},
         ),
         (
             "Техническая информация",
-            {
-                "fields": ("id", "creator", "createdAt", "updatedAt")
-            },
+            {"fields": ("id", "creator", "createdAt", "updatedAt")},
         ),
     )
 
-    list_display = ('title', 'id', 'creator', 'createdAt', 'only_logged_in')
-    list_display_links = ('title', 'id')
-    list_editable = ['only_logged_in']
-    list_filter = ('creator', 'only_logged_in')
+    list_display = ("title", "id", "creator", "createdAt", "only_logged_in")
+    list_display_links = ("title", "id")
+    list_editable = ["only_logged_in"]
+    list_filter = ("creator", "only_logged_in")
     list_per_page = 5
-    ordering = ['title']
-    search_fields = ('title', 'id', 'creator__username')
+    ordering = ["title"]
+    search_fields = ("title", "id", "creator__username")
 
     def get_form(self, request, obj=None, **kwargs):
         """
@@ -75,21 +70,17 @@ class QuestionsAdmin(admin.ModelAdmin):
     """ """
 
     fieldsets = (
-        (None, {
-            "fields": ("question", "type", "description", "form", "required")
-        }),
-        ("Техническая информация", {
-            "fields": ("id", "creator")
-        }),
+        (None, {"fields": ("question", "type", "description", "form", "required")}),
+        ("Техническая информация", {"fields": ("id", "creator")}),
     )
 
-    list_display = ('question', 'id', 'form', 'type', 'creator', 'required')
-    list_display_links = ('question', 'id')
-    list_editable = ['required']
-    list_filter = ('form__title', 'creator', 'required', 'type')
+    list_display = ("question", "id", "form", "type", "creator", "required")
+    list_display_links = ("question", "id")
+    list_editable = ["required"]
+    list_filter = ("form__title", "creator", "required", "type")
     list_per_page = 10
-    ordering = ['question', 'form__title']
-    search_fields = ('question', 'id', 'form__title')
+    ordering = ["question", "form__title"]
+    search_fields = ("question", "id", "form__title")
 
     def get_form(self, request, obj=None, **kwargs):
         """
@@ -106,7 +97,8 @@ class QuestionsAdmin(admin.ModelAdmin):
         form = super(QuestionsAdmin, self).get_form(request, obj, **kwargs)
         if request.user.is_superuser is not True:
             form.base_fields["form"].queryset = Forms.objects.filter(
-                creator=request.user)
+                creator=request.user
+            )
         return form
 
     def save_model(self, request, obj, form, change):
@@ -137,21 +129,16 @@ class ChoicesAdmin(admin.ModelAdmin):
     """ """
 
     fieldsets = (
-        (None, {
-            "fields": ("choice", "question")
-        }),
-        ("Техническая информация", {
-            "fields": ("id", "creator")
-        }),
+        (None, {"fields": ("choice", "question")}),
+        ("Техническая информация", {"fields": ("id", "creator")}),
     )
 
-    list_display = ('choice', 'id', 'question', 'creator')
-    list_display_links = ('choice', 'id')
-    list_filter = ('question__question', 'question__form', 'question__type')
+    list_display = ("choice", "id", "question", "creator")
+    list_display_links = ("choice", "id")
+    list_filter = ("question__question", "question__form", "question__type")
     list_per_page = 5
-    ordering = ['choice', 'question',
-                'question__form', 'question__type', 'creator']
-    search_fields = ('choice', 'id', 'question__question')
+    ordering = ["choice", "question", "question__form", "question__type", "creator"]
+    search_fields = ("choice", "id", "question__question")
 
     def get_form(self, request, obj=None, **kwargs):
         """
@@ -169,7 +156,8 @@ class ChoicesAdmin(admin.ModelAdmin):
         form = super(ChoicesAdmin, self).get_form(request, obj, **kwargs)
         if request.user.is_superuser is not True:
             form.base_fields["question"].queryset = Questions.objects.filter(
-                creator=request.user)
+                creator=request.user
+            )
         return form
 
     def save_model(self, request, obj, form, change):
