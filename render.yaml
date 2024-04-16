@@ -10,9 +10,5 @@ services:
         generateValue: true
       - key: PYTHON_VERSION
         value: 3.12.2
-      - key: RENDER
-        value: 1
       - key: POSTGRES_URL
         sync: false
-      - key: WEB_CONCURRENCY
-        value: 4
