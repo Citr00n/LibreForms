@@ -20,7 +20,8 @@ class Migration(migrations.Migration):
             model_name="choices",
             name="choice",
             field=models.CharField(
-                help_text='При типе вопроса "Текст" создавать вариант ответа не нужно (он проигнорируется системой)',
+                help_text=
+                'При типе вопроса "Текст" создавать вариант ответа не нужно (он проигнорируется системой)',
                 max_length=200,
                 verbose_name="Вариант ответа",
             ),
@@ -71,7 +72,8 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="forms",
             name="createdAt",
-            field=models.DateTimeField(auto_now_add=True, verbose_name="Форма создана"),
+            field=models.DateTimeField(auto_now_add=True,
+                                       verbose_name="Форма создана"),
         ),
         migrations.AlterField(
             model_name="forms",
@@ -86,9 +88,9 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="forms",
             name="description",
-            field=models.TextField(
-                blank=True, max_length=10000, verbose_name="Описание"
-            ),
+            field=models.TextField(blank=True,
+                                   max_length=10000,
+                                   verbose_name="Описание"),
         ),
         migrations.AlterField(
             model_name="forms",
@@ -107,20 +109,19 @@ class Migration(migrations.Migration):
             model_name="forms",
             name="only_logged_in",
             field=models.BooleanField(
-                default=False, verbose_name="Разрешить только авторизованным"
-            ),
+                default=False, verbose_name="Разрешить только авторизованным"),
         ),
         migrations.AlterField(
             model_name="forms",
             name="title",
-            field=models.CharField(max_length=255, verbose_name="Название формы"),
+            field=models.CharField(max_length=255,
+                                   verbose_name="Название формы"),
         ),
         migrations.AlterField(
             model_name="forms",
             name="updatedAt",
             field=models.DateTimeField(
-                auto_now=True, verbose_name="Форма обновлена последний раз"
-            ),
+                auto_now=True, verbose_name="Форма обновлена последний раз"),
         ),
         migrations.AlterField(
             model_name="questions",
@@ -134,9 +135,9 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="questions",
             name="description",
-            field=models.TextField(
-                blank=True, max_length=10000, verbose_name="Описание вопроса"
-            ),
+            field=models.TextField(blank=True,
+                                   max_length=10000,
+                                   verbose_name="Описание вопроса"),
         ),
         migrations.AlterField(
             model_name="questions",
@@ -184,7 +185,8 @@ class Migration(migrations.Migration):
                     ("checkbox", "Много вариантов"),
                     ("text", "Текст"),
                 ],
-                help_text='При типе вопроса "Текст" создавать вариант ответа не нужно (он проигнорируется системой)',
+                help_text=
+                'При типе вопроса "Текст" создавать вариант ответа не нужно (он проигнорируется системой)',
                 max_length=20,
                 verbose_name="Тип вопроса",
             ),

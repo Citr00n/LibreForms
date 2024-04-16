@@ -11,11 +11,16 @@ class FormsAdmin(admin.ModelAdmin):
     fieldsets = (
         (
             None,
-            {"fields": ("title", "description", "confirmationMsg", "only_logged_in")},
+            {
+                "fields":
+                ("title", "description", "confirmationMsg", "only_logged_in")
+            },
         ),
         (
             "Техническая информация",
-            {"fields": ("id", "creator", "createdAt", "updatedAt")},
+            {
+                "fields": ("id", "creator", "createdAt", "updatedAt")
+            },
         ),
     )
 
@@ -69,8 +74,12 @@ class QuestionsAdmin(admin.ModelAdmin):
     """ """
 
     fieldsets = (
-        (None, {"fields": ("question", "type", "description", "form", "required")}),
-        ("Техническая информация", {"fields": ("id", "creator")}),
+        (None, {
+            "fields": ("question", "type", "description", "form", "required")
+        }),
+        ("Техническая информация", {
+            "fields": ("id", "creator")
+        }),
     )
 
     list_display = ("question", "id", "form", "type", "creator", "required")
@@ -92,12 +101,11 @@ class QuestionsAdmin(admin.ModelAdmin):
         if request.user.is_superuser is not True:
             self.readonly_fields = ("id", "creator")
         else:
-            self.readonly_fields = ("id",)
+            self.readonly_fields = ("id", )
         form = super(QuestionsAdmin, self).get_form(request, obj, **kwargs)
         if request.user.is_superuser is not True:
             form.base_fields["form"].queryset = Forms.objects.filter(
-                creator=request.user
-            )
+                creator=request.user)
         return form
 
     def save_model(self, request, obj, form, change):
@@ -128,15 +136,21 @@ class ChoicesAdmin(admin.ModelAdmin):
     """ """
 
     fieldsets = (
-        (None, {"fields": ("choice", "question")}),
-        ("Техническая информация", {"fields": ("id", "creator")}),
+        (None, {
+            "fields": ("choice", "question")
+        }),
+        ("Техническая информация", {
+            "fields": ("id", "creator")
+        }),
     )
 
     list_display = ("choice", "id", "question", "creator")
     list_display_links = ("choice", "id")
     list_filter = ("question__question", "question__form", "question__type")
     list_per_page = 5
-    ordering = ["choice", "question", "question__form", "question__type", "creator"]
+    ordering = [
+        "choice", "question", "question__form", "question__type", "creator"
+    ]
     search_fields = ("choice", "id", "question__question")
 
     def get_form(self, request, obj=None, **kwargs):
@@ -151,12 +165,11 @@ class ChoicesAdmin(admin.ModelAdmin):
         if request.user.is_superuser is not True:
             self.readonly_fields = ("id", "creator")
         else:
-            self.readonly_fields = ("id",)
+            self.readonly_fields = ("id", )
         form = super(ChoicesAdmin, self).get_form(request, obj, **kwargs)
         if request.user.is_superuser is not True:
             form.base_fields["question"].queryset = Questions.objects.filter(
-                creator=request.user
-            )
+                creator=request.user)
         return form
 
     def save_model(self, request, obj, form, change):
