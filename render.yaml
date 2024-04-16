@@ -2,7 +2,7 @@ databases:
   - name: lfdb
     plan: free
     databaseName: libreforms
-    user: lfdb-agent
+    user: lfdbagent
 
 
 services:
@@ -11,7 +11,7 @@ services:
     name: LibreForms
     runtime: python
     buildCommand: "./build.sh"
-    startCommand: "uvicorn 'LibreForms.asgi:application' --host=0.0.0.0 --port=8000"
+    startCommand: "gunicorn LibreForms.asgi:application -k uvicorn.workers.UvicornWorker"
     envVars:
       - key: SECRET_KEY
         generateValue: true
@@ -23,3 +23,5 @@ services:
         fromDatabase:
           name: lfdb
           property: connectionString
+      - key: WEB_CONCURRENCY
+        value: 4
