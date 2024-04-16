@@ -1,3 +1,10 @@
+databases:
+  - name: lfdb
+    plan: free
+    databaseName: libreforms
+    user: lfdb-agent
+
+
 services:
   - type: web
     plan: free
@@ -10,3 +17,9 @@ services:
         generateValue: true
       - key: PYTHON_VERSION
         value: 3.12.2
+      - key: RENDER
+        value: 1
+      - key: RENDER_DATABASE_URL
+        fromDatabase:
+          name: lfdb
+          property: connectionString

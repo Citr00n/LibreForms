@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import os
 import subprocess
 from pathlib import Path
-
+import dj_database_url
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -101,6 +101,12 @@ if os.getenv("ENABLE_POSTGRES") == "1":
             "PORT": os.getenv("POSTGRES_PORT"),
         }
     }
+elif os.getenv("RENDER_DATABASE_URL") == "1":
+    DATABASES = {
+        'default': dj_database_url.parse(url=os.getenv("RENDER_DATABASE_URL"),
+                                         conn_max_age=600,
+                                         conn_health_checks=True,)
+    }
 else:
     DATABASES = {
         "default": {
@@ -119,19 +125,19 @@ AUTHENTICATION_BACKENDS = [
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME":
-        "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+            "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
         "NAME":
-        "django.contrib.auth.password_validation.MinimumLengthValidator",
+            "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
         "NAME":
-        "django.contrib.auth.password_validation.CommonPasswordValidator",
+            "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
         "NAME":
-        "django.contrib.auth.password_validation.NumericPasswordValidator",
+            "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
 
