@@ -25,11 +25,15 @@
     <p class="h3 pb-3 pt-2 mx-1" style="">Ваши формы:</p>
     {% for form in forms %}
         <div class="list-group list-group-horizontal pb-2 mb-2">
-        <a href="/form/{{ form.id }}" class="list-group-item list-group-item-action btn btn-outline-danger rounded-2" style="max-width: 15em">
-            {{ form.title }}
+        <a href="/form/{{ form.id }}" class="d-flex list-group-item list-group-item-action btn btn-outline-danger rounded-2 justify-content-center align-items-center" style="max-width: 15em">
+            <h3 class="">{{ form.title }}</h3>
         </a>
-            <div style="width: 0.5em"></div>
-        <a href="/form/{{ form.id }}/analytics" class="list-group-item list-group-item-action btn btn-outline-warning rounded-2" style="max-width: 15em">Аналитика формы "{{ form.title }}"</a>
+            <div style="width: 0.25em"></div>
+            <div class="border d-none d-md-block" style="width: 1px"></div>
+            <div style="width: 0.25em"></div>
+        <a href="/form/{{ form.id }}/analytics" class="d-flex list-group-item list-group-item-action btn btn-outline-warning rounded-2 justify-content-center align-items-center" style="max-width: 15em">Аналитика формы "{{ form.title }}"</a>
+        <div style="width: 0.5em"></div>
+        <a href="/form/{{ form.id }}/export" class="d-flex list-group-item list-group-item-action btn btn-outline-primary rounded-2 justify-content-center align-items-center" style="max-width: 15em">Экспорт данных из формы "{{ form.title }}"</a>
         </div>
     {% endfor %}
 </div>

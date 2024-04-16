@@ -21,7 +21,7 @@ def login_view(req):
 
     """
     if req.user.is_authenticated is True:
-        return redirect("index")
+        return redirect("home")
 
     elif req.method == "GET":
         form = forms.UserForm()
