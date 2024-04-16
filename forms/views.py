@@ -126,7 +126,6 @@ def analytics_view(req, form_id, *args, **kwargs):
         for k, v in occ.items():
             choice.append(k)
             count.append(v)
-        print(f"{choice}//{count}")
         chart = plot_piechart(names=choice,
                               values=count,
                               title=f"{question.question}")
