@@ -1,3 +1,4 @@
+import csv
 import uuid
 from collections import Counter
 
@@ -10,6 +11,7 @@ from plotly.subplots import make_subplots
 
 from .models import *
 from .plots import *
+
 
 # Create your views here.
 
@@ -131,7 +133,7 @@ def analytics_view(req, form_id, *args, **kwargs):
                               title=f"{question.question}")
         charts[question.id] = chart
 
-    if req.user == form.creator:
+    if req.user == form.creator or req.user.is_superuser:
         return render(req,
                       "analytics.html",
                       context={
@@ -149,7 +151,10 @@ def home_view(req):
 
     """
     if req.user.is_authenticated is True:
-        forms = Forms.objects.filter(creator=req.user)
+        if req.user.is_superuser:
+            forms = Forms.objects.all()
+        else:
+            forms = Forms.objects.filter(creator=req.user)
         return render(req,
                       "userhome.html",
                       context={
@@ -158,3 +163,37 @@ def home_view(req):
                       })
     else:
         return redirect("login")
+
+
+def exports_view(req, form_id, *args, **kwargs):
+    form = get_object_or_404(Forms, id=form_id)
+    if req.user == form.creator or req.user.is_superuser:
+        return render(req, 'exports.html', context={'form': form})
+    else:
+        raise PermissionDenied
+
+
+def export_view(req, form_id, question_id, *args, **kwargs):
+    form = get_object_or_404(Forms, id=form_id)
+    question = get_object_or_404(Questions, id=question_id)
+    if question not in form.questions.all():
+        raise PermissionDenied
+
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = f'attachment; filename="[{question.question}]-export.csv"'
+
+    writer = csv.writer(response, delimiter=';')
+    writer.writerow(['user', 'question', 'choice'])
+
+    # users = Library.objects.all().values_list('employee', 'IG', 'follower', 'email', 'website', 'DA', 'youtube_url',
+    #                                           'youtube_name', 'subscriber', 'type', 'country')
+    answers = question.answers.all().values_list('user__username', 'question__question', 'choice')
+    print(answers)
+
+    for answer in answers:
+        writer.writerow(answer)
+
+    if req.user == form.creator or req.user.is_superuser:
+        return response
+    else:
+        raise PermissionDenied
