@@ -14,8 +14,8 @@ def plot_piechart(names, values, title):
 
     fig.update_layout(
         autosize=False,
-        width=500,
-        height=500,
+        width=400,
+        height=400,
         title_text=title,
         template="seaborn",
         margin=dict(l=40, r=20, t=30, b=40),
