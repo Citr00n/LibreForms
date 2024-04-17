@@ -144,27 +144,6 @@ def analytics_view(req, form_id, *args, **kwargs):
         raise PermissionDenied
 
 
-def home_view(req):
-    """
-
-    :param req:
-
-    """
-    if req.user.is_authenticated is True:
-        if req.user.is_superuser:
-            forms = Forms.objects.all()
-        else:
-            forms = Forms.objects.filter(creator=req.user)
-        return render(req,
-                      "userhome.html",
-                      context={
-                          "title": req.user.username,
-                          "forms": forms
-                      })
-    else:
-        return redirect("login")
-
-
 def exports_view(req, form_id, *args, **kwargs):
     form = get_object_or_404(Forms, id=form_id)
     if req.user == form.creator or req.user.is_superuser:

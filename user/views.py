@@ -9,6 +9,7 @@ from django.db import IntegrityError
 from django.shortcuts import redirect
 from django.shortcuts import render
 
+from forms.models import Forms
 from . import forms
 
 # Create your views here.
@@ -100,3 +101,24 @@ def signup_view(req):
             except IntegrityError:
                 raise PermissionDenied
     return redirect("home")
+
+
+def home_view(req):
+    """
+
+    :param req:
+
+    """
+    if req.user.is_authenticated is True:
+        if req.user.is_superuser:
+            user_forms = Forms.objects.all()
+        else:
+            user_forms = Forms.objects.filter(creator=req.user)
+        return render(req,
+                      "userhome.html",
+                      context={
+                          "title": req.user.username,
+                          "forms": user_forms
+                      })
+    else:
+        return redirect("login")
