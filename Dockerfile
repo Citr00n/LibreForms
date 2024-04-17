@@ -33,8 +33,7 @@ COPY . .
 # Expose the port that the application listens on.
 EXPOSE 8000
 
-CMD python manage.py collectstatic --no-input
-CMD python manage.py migrate
+RUN python manage.py collectstatic --no-input
 
 # Run the application.
-CMD uvicorn 'LibreForms.asgi:application' --host=0.0.0.0 --port=8000
+CMD python manage.py migrate && uvicorn 'LibreForms.asgi:application' --host=0.0.0.0 --port=8000
