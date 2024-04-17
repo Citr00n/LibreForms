@@ -36,8 +36,10 @@ else:
 
 if os.getenv("ALLOWED_HOSTS"):
     ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(" ")
+    CSRF_TRUSTED_ORIGINS = os.getenv("ALLOWED_HOSTS").split(" ")
 else:
     ALLOWED_HOSTS = ["*"]
+    CSRF_TRUSTED_ORIGINS = ["*"]
 DEBUG_PROPAGATE_EXCEPTIONS = True
 
 # Application definition
