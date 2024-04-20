@@ -54,3 +54,14 @@
 .bs-icon.bs-icon-circle {
   border-radius: 50%;
 }
+
+@media screen and (min-width: 600px) {
+  #alert-phone {
+    visibility: hidden!important;
+    clear: both;
+    float: left;
+    margin: 10px auto 5px 20px;
+    width: 28%;
+    display: none!important;
+  }
+}
