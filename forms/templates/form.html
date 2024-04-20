@@ -38,7 +38,11 @@
                 <div class="col col-md-5 mx-md-auto pt-md-3 mx-3 pb-3">
                     <div class="my-2">
                         <fieldset>
-                            <legend class="h4 pb-sm-2 pb-md-0">Выберите ответ:</legend>
+                            {% if question.type == 'text' %}
+                                <legend class="h4 pb-sm-2 pb-md-0">Введите ответ:</legend>
+                            {% else %}
+                                <legend class="h4 pb-sm-2 pb-md-0">Выберите ответ:</legend>
+                            {% endif %}
                             {% for choice in question.choices.all %}
                             <label>
                                 {% if question.type == 'radio' %}
