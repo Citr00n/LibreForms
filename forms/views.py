@@ -89,13 +89,22 @@ def form_view(req, form_id, *args, **kwargs):
                             answer.save()
         else:
             for question in choices:
-                if question is not list:
+                if type(choices[question]) is not list:
                     answer = Answers.objects.create(
                         question=question,
                         choice=choices[question],
                         session_id=session_id,
                     )
                     answer.save()
+                else:
+                    for choice in choices[question]:
+                        if choice is not None:
+                            answer = Answers.objects.create(
+                                question=question,
+                                choice=choice,
+                                session_id=session_id,
+                            )
+                            answer.save()
 
         if form.only_logged_in:
             if req.user.is_authenticated:
