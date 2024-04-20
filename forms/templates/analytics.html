@@ -20,9 +20,10 @@
     <div class="d-flex container alert alert-warning justify-content-center align-items-center mb-3" role="alert" id="alert-phone">
       Графики лучше смотрятся на ПК/при включении "Версии для ПК"!
     </div>
-    {% for chart in charts.values %}
-    <div class="d-flex align-center justify-content-center my-3 rounded-4 px-0 shadow container" style="background: linear-gradient(180deg, rgba(255, 0, 0, 0.15), rgba(255, 0, 0, 0.05));">
-        {{ chart | safe }}
-    </div>
+    {% for key, value in charts.items %}
+        <div class="d-flex container justify-content-center h3 pt-3">{{ key }}</div>
+        <div class="d-flex  my-3 rounded-4 px-0 shadow container justify-content-center" style="background: linear-gradient(180deg, rgba(255, 0, 0, 0.15), rgba(255, 0, 0, 0.05));">
+            {{ value | safe }}
+        </div>
     {% endfor %}
 {% endblock %}

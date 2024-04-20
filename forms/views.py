@@ -127,9 +127,8 @@ def analytics_view(req, form_id, *args, **kwargs):
             choice.append(k)
             count.append(v)
         chart = plot_piechart(names=choice,
-                              values=count,
-                              title=f"{question.question}")
-        charts[question.id] = chart
+                              values=count)
+        charts[question.question] = chart
 
     if req.user == form.creator or req.user.is_superuser:
         return render(req,
@@ -162,8 +161,6 @@ def export_view(req, form_id, question_id, *args, **kwargs):
     writer = csv.writer(response, delimiter=';')
     writer.writerow(['user', 'question', 'choice'])
 
-    # users = Library.objects.all().values_list('employee', 'IG', 'follower', 'email', 'website', 'DA', 'youtube_url',
-    #                                           'youtube_name', 'subscriber', 'type', 'country')
     answers = question.answers.all().values_list('user__username', 'question__question', 'choice')
 
     for answer in answers:

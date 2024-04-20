@@ -2,7 +2,7 @@ import plotly.graph_objs as go
 from plotly.offline import plot
 
 
-def plot_piechart(names, values, title):
+def plot_piechart(names, values):
     """
 
     :param names: param values:
@@ -16,7 +16,7 @@ def plot_piechart(names, values, title):
         autosize=False,
         width=400,
         height=400,
-        title_text=title,
+        title_text="",
         template="seaborn",
         margin=dict(l=40, r=20, t=30, b=40),
         paper_bgcolor="rgba(0, 0, 0, 0)",
