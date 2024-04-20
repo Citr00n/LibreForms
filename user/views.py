@@ -55,7 +55,7 @@ def logout_view(req):
             return render(req, "logout.html", context={"title": "Выход"})
         elif req.method == "POST" and req.path != "/admin/logout":
             logout(req)
-            return redirect("login")
+            return redirect("index")
     else:
         return redirect("login")
 
