@@ -22,7 +22,7 @@
     <form method="post">
         {% csrf_token %}
         {% for question in questions %}
-        <div class="container py-4 py-xl-5">
+        <div class="container ">
             <hr class="my-5" />
             <div class="row rounded-4 shadow" style="background: linear-gradient(180deg, rgba(255, 0, 0, 0.15), rgba(255, 0, 0, 0.05)););">
                 <div class="col-md-8 col-xl-6 mx-2 p-4">
@@ -62,7 +62,7 @@
 
         </div>
         {% endfor %}
-    <button class="btn btn-danger d-flex, mx-auto mb-5" type="submit" style="display: block">ОТПРАВИТЬ</button>
+    <button class="btn btn-danger d-flex, mx-auto mb-5 mt-3 mt-xl-4" type="submit" style="display: block">ОТПРАВИТЬ</button>
     </form>
 </section>
  {% endif %}
