@@ -110,10 +110,7 @@ def home_view(req):
 
     """
     if req.user.is_authenticated is True:
-        if req.user.is_superuser:
-            user_forms = Forms.objects.all()
-        else:
-            user_forms = Forms.objects.filter(creator=req.user)
+        user_forms = Forms.objects.filter(creator=req.user)
         return render(req,
                       "userhome.html",
                       context={
