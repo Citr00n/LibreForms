@@ -27,7 +27,7 @@ class FormsAdmin(admin.ModelAdmin):
     list_display = ("title", "id", "creator", "createdAt", "only_logged_in")
     list_display_links = ("title", "id")
     list_editable = ["only_logged_in"]
-    list_filter = ("creator", "only_logged_in")
+    list_filter = ["only_logged_in"]
     list_per_page = 5
     ordering = ["title"]
     search_fields = ("title", "id", "creator__username")
@@ -85,7 +85,7 @@ class QuestionsAdmin(admin.ModelAdmin):
     list_display = ("question", "id", "form", "type", "creator", "required")
     list_display_links = ("question", "id")
     list_editable = ["required"]
-    list_filter = ("form__title", "creator", "required", "type")
+    list_filter = ("required", "type")
     list_per_page = 10
     ordering = ["question", "form__title"]
     search_fields = ("question", "id", "form__title")
@@ -146,7 +146,7 @@ class ChoicesAdmin(admin.ModelAdmin):
 
     list_display = ("choice", "id", "question", "creator")
     list_display_links = ("choice", "id")
-    list_filter = ("question__question", "question__form", "question__type")
+    list_filter = ["question__type"]
     list_per_page = 5
     ordering = [
         "choice", "question", "question__form", "question__type", "creator"
