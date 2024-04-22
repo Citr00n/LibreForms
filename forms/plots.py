@@ -14,7 +14,7 @@ def plot_piechart(names, values):
 
     fig.update_layout(
         autosize=False,
-        width=400,
+        width=700,
         height=400,
         title_text="",
         template="seaborn",
