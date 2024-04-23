@@ -196,7 +196,13 @@ class ChoicesAdmin(admin.ModelAdmin):
         return qs.filter(creator=request.user)
 
 
+class AnswersAdmin(admin.ModelAdmin):
+    list_display = ("choice", "id", "question", "session_id")
+    list_display_links = ['id']
+    search_fields = ("choice", "id", "question", "session_id")
+
+
 admin.site.register(Forms, FormsAdmin)
 admin.site.register(Questions, QuestionsAdmin)
 admin.site.register(Choices, ChoicesAdmin)
-admin.site.register(Answers)
+admin.site.register(Answers, AnswersAdmin)
