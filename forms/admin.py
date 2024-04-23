@@ -199,7 +199,7 @@ class ChoicesAdmin(admin.ModelAdmin):
 class AnswersAdmin(admin.ModelAdmin):
     list_display = ("choice", "id", "question", "session_id", "user")
     list_display_links = ['id']
-    search_fields = ("choice", "id", "question", "session_id", "user")
+    search_fields = ("choice", "id", "question__question", "session_id", "user__username")
 
 
 admin.site.register(Forms, FormsAdmin)
