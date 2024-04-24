@@ -11,7 +11,7 @@
 
   env:
     INSTANCE: 'Writerside/ld'
-    ARTIFACT: 'webHelpHI2-all.zip'
+    ARTIFACT: 'webHelpLD2-all.zip'
     DOCKER_VERSION: '241.15989'
 
   jobs:
