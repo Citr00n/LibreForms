@@ -92,11 +92,11 @@ WSGI_APPLICATION = "LibreForms.wsgi.application"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 if os.getenv("POSTGRES_URL"):
     DATABASES = {
-        'default': dj_database_url.parse(url=os.getenv("POSTGRES_URL"))
+        'default': dj_database_url.parse(url=os.getenv("POSTGRES_URL"), conn_health_checks=True)
     }
 elif os.getenv("MYSQL_URL"):
     DATABASES = {
-        'default': dj_database_url.parse(url=os.getenv("MYSQL_URL"))
+        'default': dj_database_url.parse(url=os.getenv("MYSQL_URL"), conn_health_checks=True)
     }
 else:
     DATABASES = {
