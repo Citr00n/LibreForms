@@ -10,7 +10,7 @@
     pages: write
 
   env:
-    INSTANCE: 'LibreForms Docs/ld'
+    INSTANCE: 'Writerside/ld'
     ARTIFACT: 'webHelpHI2-all.zip'
     DOCKER_VERSION: '241.15989'
 
