@@ -2,7 +2,7 @@
 
   on:
     push:
-      branches: ["main"]
+      branches: ["docs"]
     workflow_dispatch:
 
   permissions:
