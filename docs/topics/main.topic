@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       title="Главная" id="main">
+
+    <section-starting-page>
+        <title>Главная</title>
+        <description>Добро пожаловать на страницу документации LibreForms</description>
+
+        <spotlight>
+            <title>Основное</title>
+            <a type="start" href="getting-started.topic" summary="Краткое руководство пользователя">Начало работы</a>
+            <a type="container" summary="Руководство по развёртке проекта">Развёртка проекта</a>
+        </spotlight>
+        <primary>
+            <title>Пользователю</title>
+            <a type="start" href="getting-started.topic" summary="Краткое руководство пользователя">Начало работы</a>
+        </primary>
+        <secondary>
+            <title>Разработчику</title>
+            <a type="container" summary="Руководство по развёртке проекта">Развёртка проекта</a>
+        </secondary>
+    </section-starting-page>
+
+</topic>

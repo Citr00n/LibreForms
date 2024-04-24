@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rules SYSTEM "https://resources.jetbrains.com/writerside/1.0/redirection-rules.dtd">
+<rules>
+    <!-- format is as follows
+    <rule id="<unique id>">
+        <accepts>page.html</accepts>
+    </rule>
+    -->
+    <rule id="487fc98b">
+        <description>Created after removal of "About LibreForms Docs" from LibreForms Docs</description>
+        <accepts>starter-topic.html</accepts>
+    </rule>
+    <rule id="1ceaf3df">
+        <description>Created after removal of "Главная" from LibreForms Docs</description>
+        <accepts>Главная.html</accepts>
+    </rule>
+    <rule id="31becf6">
+        <description>Created after removal of "Главная" from LibreForms Docs</description>
+        <accepts>main.html</accepts>
+    </rule>
+    <rule id="107400fc">
+        <description>Created after removal of "Section Starting Page" from LibreForms Docs</description>
+        <accepts>Section-Starting-Page.html</accepts>
+    </rule>
+</rules>
