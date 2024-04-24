@@ -1,8 +1,11 @@
-  name: Build documentation
+  name: Build Docs
 
   on:
     push:
-      branches: ["docs"]
+      branches:
+        - 'main'
+      paths:
+        - 'docs/**'
     workflow_dispatch:
 
   permissions:
@@ -10,7 +13,7 @@
     pages: write
 
   env:
-    INSTANCE: 'Writerside/ld'
+    INSTANCE: 'docs/ld'
     ARTIFACT: 'webHelpLD2-all.zip'
     DOCKER_VERSION: '241.15989'
 
